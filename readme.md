@@ -1,6 +1,6 @@
 # FieldtypeFontIconPicker
 
-> Module allow you to use Fotn-Awesome icons easily. You can select icons directly from icon select list, also you can set a settings for each InputfieldFontIconPicker.
+> Module allow you to use Fotn-Awesome icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
 
 ### Module Using
 
