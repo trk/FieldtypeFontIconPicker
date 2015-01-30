@@ -11,18 +11,18 @@
 
 > InputfieldFontIconPicker Setting "Category Select"
 
-![InputfieldFontIconPicker Field Settings Category Select](https://github.com/trk/FieldtypeFontIconPicker/blob/master/Screenshots/category-select.png)
+![InputfieldFontIconPicker Field Settings Category Select](http://i59.tinypic.com/65mw6e.jpg)
 
 > InputfieldFontIconPicker Setting "Theme Select"
 
-![InputfieldFontIconPicker Field Settings Theme Select](https://github.com/trk/FieldtypeFontIconPicker/blob/master/Screenshots/theme-select.png)
+![InputfieldFontIconPicker Field Settings Theme Select](http://i60.tinypic.com/2nksx94.jpg)
 
 ### Screenshots - InputfieldFontIconPicker page edit views
 
 > InputfieldFontIconPicker Search
 
-![InputfieldFontIconPicker Field Settings Category Select](https://github.com/trk/FieldtypeFontIconPicker/blob/master/Screenshots/picker-search.png)
+![InputfieldFontIconPicker](http://i59.tinypic.com/1zdpsnk.jpg)
 
 > InputfieldFontIconPicker Categories
 
-![InputfieldFontIconPicker Field Settings Theme Select](https://github.com/trk/FieldtypeFontIconPicker/blob/master/Screenshots/picker-categories.png)
+![InputfieldFontIconPicker](http://i61.tinypic.com/66zuyw.jpg)
