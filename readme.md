@@ -2,6 +2,13 @@
 
 > Module allow you to use Fotn-Awesome icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
 
+*NOTE:* Module store data without prefix, you need to add *"prefix"* when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different *"prefix"*.
+
+*Example :*
+```
+if($my-icon-field) echo "<i class='my-prefix-{$my-icon-field}' />";
+```
+
 ### Module Using
 
 * [Font-Awesome v4.3](http://fontawesome.io)
