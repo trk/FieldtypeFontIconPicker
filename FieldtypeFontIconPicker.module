@@ -52,7 +52,7 @@ class FieldtypeFontIconPicker extends Fieldtype {
 	 * Sanitize value for storage
 	 */
 	public function sanitizeValue(Page $page, Field $field, $value) {
-		$value = str_replace($this->prefix, '', $value);
+		$value = str_replace(wire('modules')->get('InputfieldFontIconPicker')->attr('prefix'), '', $value);
 		return $value;
 	}
 
