@@ -9,5 +9,5 @@ Module allow you to use Fotn-Awesome icons easily. You can select icons directly
 
 ### Screenshots
 
-![InputfieldFontIconPicker Field Settings Category Select](https://github.com/Da-Fecto/InputfieldSourceCode/blob/master/Screenshots/category-select.png)
-![InputfieldFontIconPicker Field Settings Theme Select](https://github.com/Da-Fecto/InputfieldSourceCode/blob/master/Screenshots/category-select.png)
+![InputfieldFontIconPicker Field Settings Category Select](https://github.com/trk/FieldtypeFontIconPicker/blob/master/Screenshots/category-select.png)
+![InputfieldFontIconPicker Field Settings Theme Select](https://github.com/trk/FieldtypeFontIconPicker/blob/master/Screenshots/category-select.png)
