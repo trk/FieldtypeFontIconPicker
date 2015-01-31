@@ -9,6 +9,17 @@
 if($my-icon-field) echo "<i class='my-prefix-{$my-icon-field}' />";
 ```
 
+### MarkupFontIconPicker Usage
+```
+// MarkupFontIconPicker::render(YourIconField=string, Options=array)
+echo MarkupFontIconPicker::render($page->YourIconField, [
+        'prefix' => 'uk-icon-', // Icon class prefix, if you have different prefix, default is : "fa fa-"
+        'tag' => 'span', // Icon tag default is : "i"
+        'class' => 'fa-lg', // If you have extra cutom classes, for example : icons sizes, Array or Sting value
+        'style' => 'your custom styles if you have' // Array or String Value
+    ]);
+```
+
 ### Module Using
 
 * [Font-Awesome v4.3](http://fontawesome.io)

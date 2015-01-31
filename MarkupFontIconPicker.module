@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * Class MarkupFontIconPicker
+ *
+ * @author			: İskender TOTOĞLU, @ukyo (community), @trk (Github)
+ * @website			: http://altivebir.com.tr
+ * @projectWebsite	: https://github.com/trk/FieldtypeFontIconPicker
+ */
+class MarkupFontIconPicker extends WireData implements Module {
+
+    public static function getModuleInfo() {
+        return array(
+            'title'     => "MarkupFontIconPicker",
+            'summary'   => __('Allow you to call icons simply for InputFieldIconPicker inputs.'),
+            'version'   => 2,
+            'author'    => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
+            'href'      => 'https://github.com/trk/FieldtypeFontIconPicker',
+            'icon'      => 'flag',
+            'autoload' => true,
+            'singular' => true
+        );
+    }
+
+    public function init() {
+
+    }
+
+    /**
+     * Render Icon Field
+     *
+     * @param $icon
+     * @param array $options
+     * @return string
+     */
+    public static function render($icon, $options=[]) {
+        $prefix = (array_key_exists('prefix', $options)) ? $options['prefix'] : 'fa fa-';
+        $tag    = (array_key_exists('tag', $options)) ? $options['tag'] : 'i';
+
+        $class = [];
+
+        // Set Icon Class
+        $class[] = $prefix . $icon;
+
+        // Get & Set Extra Classes
+        if(array_key_exists('class', $options) && is_array($options['class'])) foreach($options['class'] as $k => $clss) $class[] = $clss;
+        if(array_key_exists('class', $options) && !is_array($options['class'])) $class[] = $options['class'];
+
+        // Prepare "class" attribute
+        $class = (!empty($class)) ? " class='" . implode(' ', $class) . "'" : "";
+
+        // Get & Set Styles
+        $style = [];
+        if(array_key_exists('style', $options) && is_array($options['style'])) foreach($options['style'] as $k => $styl) $style[] = $styl;
+        if(array_key_exists('style', $options) && !is_array($options['style'])) $style[] = $options['style'];
+
+        // Prepare "style" attribute
+        $style = (!empty($style)) ? " style='" . implode(' ', $style) . "'" : "";
+
+        return "<{$tag}{$class}{$style}></{$tag}>";
+    }
+}
