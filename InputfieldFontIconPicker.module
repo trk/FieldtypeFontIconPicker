@@ -15,7 +15,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 1,
+			'version' => 2,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -97,6 +97,9 @@ class InputfieldFontIconPicker extends Inputfield {
 						\n\t\t\tsource: {$options['icons']},
 						\n\t\t\t{$settings}
 						\n\t\t});
+						\n\t\tif($('#content').length) {
+						\n\t\t\t$('#content').css('z-index', 2);
+						\n\t\t}
 						\n\t});
 						\n</script>";
 		}
