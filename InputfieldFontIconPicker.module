@@ -15,7 +15,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 2,
+			'version' => 4,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -65,13 +65,13 @@ class InputfieldFontIconPicker extends Inputfield {
 	 * @param array $options
 	 * @return string
 	 */
-	public function getFontIconPicker($options=[]) {
+	public function getFontIconPicker($options=array()) {
 
 		$output = "";
 
 		if(array_key_exists('id', $options) && array_key_exists('icons', $options)) {
 
-			$configs = [];
+			$configs = array();
 
 			if($this->attr('theme')) $configs['theme'] = $this->attr('theme');
 			if(!$this->attr('emptyIcon')) $configs['emptyIcon'] = 'false'; // Default 'true'
@@ -145,11 +145,11 @@ class InputfieldFontIconPicker extends Inputfield {
 		$_icons .= "}";
 
 		// Set FontIconPicker Options
-		$options = [
+		$options = array(
 			'id' => $attrs['id'],
 			'icons' => $_icons,
 			'value' => $attrs['value']
-		];
+        );
 
 		// Get JS Code For FontIconPicker
 		$output .= self::getFontIconPicker($options);
@@ -187,12 +187,12 @@ class InputfieldFontIconPicker extends Inputfield {
 		/**
 		 * Theme Select
 		 */
-		$themes = [
+		$themes = array(
 			'fip-grey' => __('The default theme'),
 			'fip-darkgrey' => __('A deeper shade of the grey theme'),
 			'fip-bootstrap' => __('A nice icon picker theme'),
 			'fip-inverted' => __('Inverted color scheme')
-		];
+		);
 
 		$field = $this->modules->get('InputfieldSelect');
 		$field->setAttribute('name', 'theme');

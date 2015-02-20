@@ -13,7 +13,7 @@ class MarkupFontIconPicker extends WireData implements Module {
         return array(
             'title'     => "MarkupFontIconPicker",
             'summary'   => __('Allow you to call icons simply for InputFieldIconPicker inputs.'),
-            'version'   => 3,
+            'version'   => 4,
             'author'    => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
             'href'      => 'https://github.com/trk/FieldtypeFontIconPicker',
             'icon'      => 'flag',
@@ -33,11 +33,11 @@ class MarkupFontIconPicker extends WireData implements Module {
      * @param array $options
      * @return string
      */
-    public static function render($icon, $options=[]) {
+    public static function render($icon, $options=array()) {
         $prefix = (array_key_exists('prefix', $options)) ? $options['prefix'] : 'fa fa-';
         $tag    = (array_key_exists('tag', $options)) ? $options['tag'] : 'i';
 
-        $class = [];
+        $class = array();
 
         // Set Icon Class
         $class[] = $prefix . $icon;
@@ -50,7 +50,7 @@ class MarkupFontIconPicker extends WireData implements Module {
         $class = (!empty($class)) ? " class='" . implode(' ', $class) . "'" : "";
 
         // Get & Set Styles
-        $style = [];
+        $style = array();
         if(array_key_exists('style', $options) && is_array($options['style'])) foreach($options['style'] as $k => $styl) $style[] = $styl;
         if(array_key_exists('style', $options) && !is_array($options['style'])) $style[] = $options['style'];
 

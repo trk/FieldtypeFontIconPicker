@@ -4,14 +4,14 @@
  *
  * @author : @ukyo (community), @trk (Github), http://altivebir.com.tr
  */
-$FontAwesomeIcons = [];
+$FontAwesomeIcons = array();
 
 /**
  * Web Application Icons
  */
-$FontAwesomeIcons['web-application-icons'] = [
+$FontAwesomeIcons['web-application-icons'] = array(
     'title' => __('Web Application Icons'),
-    'icons' => [
+    'icons' => array(
         'adjust', 'anchor', 'archive', 'area-chart', 'arrows', 'arrows-h', 'arrows-v', 'asterisk', 'at', 'ban', 'bar-chart', 'barcode',
         'bars', 'bed', 'beer', 'bell', 'bell-o', 'bell-slash', 'bell-slash-o', 'bicycle', 'binoculars', 'birthday-cake', 'bolt', 'bomb',
         'book', 'bookmark', 'bookmark-o', 'briefcase', 'bug', 'building', 'building-o', 'bullhorn', 'bullseye', 'bus', 'calculator', 'calendar',
@@ -39,134 +39,134 @@ $FontAwesomeIcons['web-application-icons'] = [
         'times-circle-o', 'tint', 'toggle-off', 'toggle-on', 'trash', 'trash-o', 'tree', 'trophy', 'truck', 'tty', 'umbrella', 'university',
         'unlock', 'unlock-alt', 'upload', 'user', 'user-plus', 'user-secret', 'user-times', 'users', 'video-camera', 'volume-down', 'volume-off',
         'volume-up', 'wheelchair', 'wifi', 'wrench'
-    ]
-];
+    )
+);
 
 /**
  * Transportation Icons
  */
-$FontAwesomeIcons['transportation-icons'] = [
+$FontAwesomeIcons['transportation-icons'] = array(
     'title' => __('Transportation Icons'),
-    'icons' => [
+    'icons' => array(
         'ambulance', 'bicycle', 'bus', 'car', 'fighter-jet', 'motorcycle', 'plane', 'rocket', 'ship', 'space-shuttle', 'subway', 'taxi', 'train', 'truck', 'wheelchair'
-    ]
-];
+    )
+);
 
 /**
  * Gender Icons
  */
-$FontAwesomeIcons['gender-icons'] = [
+$FontAwesomeIcons['gender-icons'] = array(
     'title' => __('Gender Icons'),
-    'icons' => [
+    'icons' => array(
         'circle-thin', 'mars', 'mars-double', 'mars-stroke', 'mars-stroke-h', 'mars-stroke-v', 'mercury', 'neuter', 'transgender', 'transgender-alt', 'venus', 'venus-double', 'venus-mars'
-    ]
-];
+    )
+);
 
 /**
  * File Type Icons
  */
-$FontAwesomeIcons['file-type-icons'] = [
+$FontAwesomeIcons['file-type-icons'] = array(
     'title' => __('File Type Icons'),
-    'icons' => [
+    'icons' => array(
         'file', 'file-archive-o', 'file-audio-o', 'file-code-o', 'file-excel-o', 'file-image-o', 'file-o', 'file-pdf-o', 'file-powerpoint-o', 'file-text', 'file-text-o', 'file-video-o', 'file-word-o'
-    ]
-];
+    )
+);
 
 /**
  * Spinner Icons
  */
-$FontAwesomeIcons['spinner-icons'] = [
+$FontAwesomeIcons['spinner-icons'] = array(
     'title' => __('Spinner Icons'),
-    'icons' => [
+    'icons' => array(
         'circle-o-notch', 'cog', 'spinner'
-    ]
-];
+    )
+);
 
 /**
  * Form Control Icons
  */
-$FontAwesomeIcons['form-control-icons'] = [
+$FontAwesomeIcons['form-control-icons'] = array(
     'title' => __('Form Control Icons'),
-    'icons' => [
+    'icons' => array(
         'check-square', 'check-square-o', 'circle', 'circle-o', 'dot-circle-o', 'minus-square', 'minus-square-o', 'plus-square', 'plus-square-o', 'square', 'square-o'
-    ]
-];
+    )
+);
 
 /**
  * Payment Icons
  */
-$FontAwesomeIcons['payment-icons'] = [
+$FontAwesomeIcons['payment-icons'] = array(
     'title' => __('Payment Icons'),
-    'icons' => [
+    'icons' => array(
         'cc-amex', 'cc-discover', 'cc-mastercard', 'cc-paypal', 'cc-stripe', 'cc-visa', 'credit-card', 'google-wallet', 'paypal'
-    ]
-];
+    )
+);
 
 /**
  * Chart Icons
  */
-$FontAwesomeIcons['chart-icons'] = [
+$FontAwesomeIcons['chart-icons'] = array(
     'title' => __('Chart Icons'),
-    'icons' => [
+    'icons' => array(
         'area-chart', 'bar-chart', 'line-chart', 'pie-chart'
-    ]
-];
+    )
+);
 
 /**
  * Currency Icons
  */
-$FontAwesomeIcons['currency-icons'] = [
+$FontAwesomeIcons['currency-icons'] = array(
     'title' => __('Currency Icons'),
-    'icons' => [
+    'icons' => array(
         'btc', 'eur', 'gbp', 'ils', 'inr', 'jpy', 'krw', 'money', 'rub', 'try', 'usd'
-    ]
-];
+    )
+);
 
 /**
  * Text Editor Icons
  */
-$FontAwesomeIcons['text-editor-icons'] = [
+$FontAwesomeIcons['text-editor-icons'] = array(
     'title' => __('Text Editor Icons'),
-    'icons' => [
+    'icons' => array(
         'align-center', 'align-justify', 'align-left', 'align-right', 'bold', 'chain-broken', 'clipboard', 'columns', 'eraser',
         'file', 'file-o', 'file-text', 'file-text-o', 'files-o', 'floppy-o', 'font', 'header', 'indent', 'italic', 'link', 'list', 'list-alt',
         'list-ol', 'list-ul', 'outdent', 'paperclip', 'paragraph', 'repeat', 'scissors', 'strikethrough', 'subscript', 'superscript', 'table',
         'text-height', 'text-width', 'th', 'th-large', 'th-list', 'underline', 'undo', 'unlink'
-    ]
-];
+    )
+);
 
 /**
  * Directional Icons
  */
-$FontAwesomeIcons['directional-icons'] = [
+$FontAwesomeIcons['directional-icons'] = array(
     'title' => __('Directional Icons'),
-    'icons' => [
+    'icons' => array(
         'angle-double-down', 'angle-double-left', 'angle-double-right', 'angle-double-up', 'angle-down', 'angle-left', 'angle-right', 'angle-up',
         'arrow-circle-down', 'arrow-circle-left', 'arrow-circle-o-down', 'arrow-circle-o-left', 'arrow-circle-o-right', 'arrow-circle-o-up', 'arrow-circle-right',
         'arrow-circle-up', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrows', 'arrows-alt', 'arrows-h', 'arrows-v', 'caret-down', 'caret-left',
         'caret-right', 'caret-square-o-down', 'caret-square-o-left', 'caret-square-o-right', 'caret-square-o-up', 'caret-up', 'chevron-circle-down',
         'chevron-circle-left', 'chevron-circle-right', 'chevron-circle-up', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'hand-o-down',
         'hand-o-left', 'hand-o-right', 'hand-o-up', 'long-arrow-down', 'long-arrow-left', 'long-arrow-right', 'long-arrow-up'
-    ]
-];
+    )
+);
 
 /**
  * Video Player Icons
  */
-$FontAwesomeIcons['video-player-icons'] = [
+$FontAwesomeIcons['video-player-icons'] = array(
     'title' => __('Video Player Icons'),
-    'icons' => [
+    'icons' => array(
         'arrows-alt', 'backward', 'compress', 'eject', 'expand', 'fast-backward', 'fast-forward', 'forward', 'pause', 'play', 'play-circle', 'play-circle-o',
         'step-backward', 'step-forward', 'stop', 'youtube-play'
-    ]
-];
+    )
+);
 
 /**
  * Brand Icons
  */
-$FontAwesomeIcons['brand-icons'] = [
+$FontAwesomeIcons['brand-icons'] = array(
     'title' => __('Brand Icons'),
-    'icons' => [
+    'icons' => array(
         'adn', 'android', 'apple', 'behance', 'behance-square', 'bitbucket', 'bitbucket-square', 'btc', 'buysellads', 'cc-amex', 'cc-discover', 'cc-mastercard',
         'cc-paypal', 'cc-stripe', 'cc-visa', 'codepen', 'connectdevelop', 'css3', 'dashcube', 'delicious', 'deviantart', 'digg', 'dribbble', 'dropbox', 'drupal',
         'empire', 'facebook', 'facebook-official', 'facebook-square', 'flickr', 'forumbee', 'foursquare', 'git', 'git-square', 'github', 'github-alt', 'github-square',
@@ -176,18 +176,18 @@ $FontAwesomeIcons['brand-icons'] = [
         'simplybuilt', 'skyatlas', 'skype', 'slack', 'slideshare', 'soundcloud', 'spotify', 'stack-exchange', 'stack-overflow', 'steam', 'steam-square', 'stumbleupon',
         'stumbleupon-circle', 'tencent-weibo', 'trello', 'tumblr', 'tumblr-square', 'twitch', 'twitter', 'twitter-square', 'viacoin', 'vimeo-square', 'vine',
         'vk', 'weibo', 'weixin', 'whatsapp', 'windows', 'wordpress', 'xing', 'xing-square', 'yahoo', 'yelp', 'youtube', 'youtube-play', 'youtube-square'
-    ]
-];
+    )
+);
 
 /**
  * Medical Icons
  */
-$FontAwesomeIcons['medical-icons'] = [
+$FontAwesomeIcons['medical-icons'] = array(
     'title' => __('Medical Icons'),
-    'icons' => [
+    'icons' => array(
         'ambulance', 'h-square', 'heart', 'heart-o', 'heartbeat', 'hospital-o', 'medkit', 'plus-square', 'stethoscope', 'user-md', 'wheelchair'
-    ]
-];
+    )
+);
 
 asort($FontAwesomeIcons);
 
