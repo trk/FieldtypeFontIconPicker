@@ -15,7 +15,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 4,
+			'version' => 5,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -41,6 +41,18 @@ class InputfieldFontIconPicker extends Inputfield {
 	 */
 	public function init() {
 		parent::init();
+
+        // Load FontIconPicker Base CSS File
+        wire('config')->styles->append(wire('config')->urls->FieldtypeFontIconPicker . "Libraries/fontIconPicker-2.0.0/css/jquery.fonticonpicker.css");
+
+        // Load FontIconPicker Themes CSS Files
+        wire('config')->styles->append(wire('config')->urls->FieldtypeFontIconPicker . "Libraries/fontIconPicker-2.0.0/themes/grey-theme/jquery.fonticonpicker.grey.min.css");
+        wire('config')->styles->append(wire('config')->urls->FieldtypeFontIconPicker . "Libraries/fontIconPicker-2.0.0/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css");
+        wire('config')->styles->append(wire('config')->urls->FieldtypeFontIconPicker . "Libraries/fontIconPicker-2.0.0/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css");
+        wire('config')->styles->append(wire('config')->urls->FieldtypeFontIconPicker . "Libraries/fontIconPicker-2.0.0/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css");
+
+        // Load FontIconPicker Base JS File
+        wire('config')->scripts->append(wire('config')->urls->FieldtypeFontIconPicker . "Libraries/fontIconPicker-2.0.0/jquery.fonticonpicker.min.js");
 	}
 
 	/**
