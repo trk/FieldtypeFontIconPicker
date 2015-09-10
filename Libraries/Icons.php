@@ -38,7 +38,22 @@ $FontAwesomeIcons['web-application-icons'] = array(
         'tasks', 'taxi', 'terminal', 'thumb-tack', 'thumbs-down', 'thumbs-o-down', 'thumbs-o-up', 'thumbs-up', 'ticket', 'times', 'times-circle',
         'times-circle-o', 'tint', 'toggle-off', 'toggle-on', 'trash', 'trash-o', 'tree', 'trophy', 'truck', 'tty', 'umbrella', 'university',
         'unlock', 'unlock-alt', 'upload', 'user', 'user-plus', 'user-secret', 'user-times', 'users', 'video-camera', 'volume-down', 'volume-off',
-        'volume-up', 'wheelchair', 'wifi', 'wrench'
+        'volume-up', 'wheelchair', 'wifi', 'wrench', 'battery-empty', 'battery-full', 'battery-half', 'battery-quarter', 'battery-three-quarters', // 'battery-0', 'battery-1', 'battery-2', 'battery-3', 'battery-4' // Alias
+        'balance-scale', 'calendar-check-o', 'calendar-minus-o', 'calendar-plus-o', 'calendar-times-o', 'clone', 'commenting', 'commenting-o',
+        'creative-commons', 'hand-lizard-o', 'hand-paper-o', 'hand-peace-o', 'hand-pointer-o', 'hand-rock-o', 'hand-scissors-o', 'hand-spock-o',
+        'hourglass', 'hourglass-end', 'hourglass-half', 'hourglass-o', 'hourglass-start', 'i-cursor', 'industry', 'map', 'map-o', 'map-pin', 'map-signs', 'mouse-pointer',
+        'object-group', 'object-ungroup', 'registered', 'sticky-note', 'sticky-note-o', 'television', 'trademark'
+    )
+);
+
+/**
+ * Hand Icons
+ */
+$FontAwesomeIcons['hand-icons'] = array(
+    'title' => __('Hand Icons'),
+    'icons' => array(
+        'hand-lizard-o', 'hand-o-down', 'hand-o-left', 'hand-o-right', 'hand-o-up', 'hand-paper-o', 'hand-peace-o', 'hand-pointer-o', 'hand-rock-o', 'hand-scissors-o',
+        'hand-spock-o', 'thumbs-down', 'thumbs-o-down', 'thumbs-o-up', 'thumbs-up'
     )
 );
 
@@ -58,7 +73,7 @@ $FontAwesomeIcons['transportation-icons'] = array(
 $FontAwesomeIcons['gender-icons'] = array(
     'title' => __('Gender Icons'),
     'icons' => array(
-        'circle-thin', 'mars', 'mars-double', 'mars-stroke', 'mars-stroke-h', 'mars-stroke-v', 'mercury', 'neuter', 'transgender', 'transgender-alt', 'venus', 'venus-double', 'venus-mars'
+        'circle-thin', 'mars', 'mars-double', 'mars-stroke', 'mars-stroke-h', 'mars-stroke-v', 'mercury', 'neuter', 'transgender', 'transgender-alt', 'venus', 'venus-double', 'venus-mars', 'genderless'
     )
 );
 
@@ -98,7 +113,7 @@ $FontAwesomeIcons['form-control-icons'] = array(
 $FontAwesomeIcons['payment-icons'] = array(
     'title' => __('Payment Icons'),
     'icons' => array(
-        'cc-amex', 'cc-discover', 'cc-mastercard', 'cc-paypal', 'cc-stripe', 'cc-visa', 'credit-card', 'google-wallet', 'paypal'
+        'cc-amex', 'cc-discover', 'cc-mastercard', 'cc-paypal', 'cc-stripe', 'cc-visa', 'credit-card', 'google-wallet', 'paypal', 'cc-diners-club', 'cc-jcb'
     )
 );
 
@@ -118,7 +133,7 @@ $FontAwesomeIcons['chart-icons'] = array(
 $FontAwesomeIcons['currency-icons'] = array(
     'title' => __('Currency Icons'),
     'icons' => array(
-        'btc', 'eur', 'gbp', 'ils', 'inr', 'jpy', 'krw', 'money', 'rub', 'try', 'usd'
+        'btc', 'eur', 'gbp', 'ils', 'inr', 'jpy', 'krw', 'money', 'rub', 'try', 'usd', 'gg', 'gg-circle'
     )
 );
 
@@ -175,7 +190,9 @@ $FontAwesomeIcons['brand-icons'] = array(
         'pinterest', 'pinterest-p', 'pinterest-square', 'qq', 'rebel', 'reddit', 'reddit-square', 'renren', 'sellsy', 'share-alt', 'share-alt-square', 'shirtsinbulk',
         'simplybuilt', 'skyatlas', 'skype', 'slack', 'slideshare', 'soundcloud', 'spotify', 'stack-exchange', 'stack-overflow', 'steam', 'steam-square', 'stumbleupon',
         'stumbleupon-circle', 'tencent-weibo', 'trello', 'tumblr', 'tumblr-square', 'twitch', 'twitter', 'twitter-square', 'viacoin', 'vimeo-square', 'vine',
-        'vk', 'weibo', 'weixin', 'whatsapp', 'windows', 'wordpress', 'xing', 'xing-square', 'yahoo', 'yelp', 'youtube', 'youtube-play', 'youtube-square'
+        'vk', 'weibo', 'weixin', 'whatsapp', 'windows', 'wordpress', 'xing', 'xing-square', 'yahoo', 'yelp', 'youtube', 'youtube-play', 'youtube-square', '500px', 'amazon',
+        'black-tie', 'cc-diners-club', 'cc-jcb', 'chrome', 'contao', 'expeditedssl', 'firefox', 'fonticons', 'get-pocket', 'gg', 'gg-circle', 'houzz', 'internet-explorer',
+        'odnoklassniki', 'odnoklassniki-square', 'opencart', 'opera', 'optin-monster', 'safari', 'tripadvisor', 'vimeo', 'wikipedia-w', 'y-combinator'
     )
 );
 
