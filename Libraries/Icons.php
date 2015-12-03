@@ -12,37 +12,397 @@ $FontAwesomeIcons = array();
 $FontAwesomeIcons['web-application-icons'] = array(
     'title' => __('Web Application Icons'),
     'icons' => array(
-        'adjust', 'anchor', 'archive', 'area-chart', 'arrows', 'arrows-h', 'arrows-v', 'asterisk', 'at', 'ban', 'bar-chart', 'barcode',
-        'bars', 'bed', 'beer', 'bell', 'bell-o', 'bell-slash', 'bell-slash-o', 'bicycle', 'binoculars', 'birthday-cake', 'bolt', 'bomb',
-        'book', 'bookmark', 'bookmark-o', 'briefcase', 'bug', 'building', 'building-o', 'bullhorn', 'bullseye', 'bus', 'calculator', 'calendar',
-        'calendar-o', 'camera', 'camera-retro', 'car', 'caret-square-o-down', 'caret-square-o-left', 'caret-square-o-right', 'caret-square-o-up',
-        'cart-arrow-down', 'cart-plus', 'cc', 'certificate', 'check', 'check-circle', 'check-circle-o', 'check-square', 'check-square-o', 'child',
-        'circle', 'circle-o', 'circle-o-notch', 'circle-thin', 'clock-o', 'cloud', 'cloud-download', 'cloud-upload', 'code', 'code-fork', 'coffee',
-        'cog', 'cogs', 'comment', 'comment-o', 'comments', 'comments-o', 'compass', 'copyright', 'credit-card', 'crop', 'crosshairs', 'cube', 'cubes',
-        'cutlery', 'database', 'desktop', 'diamond', 'dot-circle-o', 'download', 'ellipsis-h', 'ellipsis-v', 'envelope', 'envelope-o', 'envelope-square',
-        'eraser', 'exchange', 'exclamation', 'exclamation-circle', 'exclamation-triangle', 'external-link', 'external-link-square', 'eye', 'eye-slash',
-        'eyedropper', 'fax', 'female', 'fighter-jet', 'file-archive-o', 'file-audio-o', 'file-code-o', 'file-excel-o', 'file-image-o', 'file-pdf-o',
-        'file-powerpoint-o', 'file-video-o', 'file-word-o', 'film', 'filter', 'fire', 'fire-extinguisher', 'flag', 'flag-checkered', 'flag-o',
-        'flask', 'folder', 'folder-o', 'folder-open', 'folder-open-o', 'frown-o', 'futbol-o', 'gamepad', 'gavel', 'gift', 'glass', 'globe',
-        'graduation-cap', 'hdd-o', 'headphones', 'heart', 'heart-o', 'heartbeat', 'history', 'home', 'inbox', 'info', 'info-circle', 'key',
-        'keyboard-o', 'language', 'laptop', 'leaf', 'lemon-o', 'level-down', 'level-up', 'life-ring', 'lightbulb-o', 'line-chart',
-        'location-arrow', 'lock', 'magic', 'magnet', 'male', 'map-marker', 'meh-o', 'microphone', 'microphone-slash', 'minus', 'minus-circle',
-        'minus-square', 'minus-square-o', 'mobile', 'money', 'moon-o', 'motorcycle', 'music', 'newspaper-o', 'paint-brush', 'paper-plane',
-        'paper-plane-o', 'paw', 'pencil', 'pencil-square', 'pencil-square-o', 'phone', 'phone-square', 'picture-o', 'pie-chart', 'plane', 'plug',
-        'plus', 'plus-circle', 'plus-square', 'plus-square-o', 'power-off', 'print', 'puzzle-piece', 'qrcode', 'question', 'question-circle',
-        'quote-left', 'quote-right', 'random', 'recycle', 'refresh', 'reply', 'reply-all', 'retweet', 'road', 'rocket', 'rss', 'rss-square',
-        'search', 'search-minus', 'search-plus', 'server', 'share', 'share-alt', 'share-alt-square', 'share-square', 'share-square-o', 'shield',
-        'ship', 'shopping-cart', 'sign-in', 'sign-out', 'signal', 'sitemap', 'sliders', 'smile-o', 'sort', 'sort-alpha-asc', 'sort-alpha-desc',
-        'sort-amount-asc', 'sort-amount-desc', 'sort-asc', 'sort-desc', 'sort-numeric-asc', 'sort-numeric-desc', 'space-shuttle', 'spinner', 'spoon',
-        'square', 'square-o', 'star', 'star-half', 'star-half-o', 'star-o', 'street-view', 'suitcase', 'sun-o', 'tablet', 'tachometer', 'tag', 'tags',
-        'tasks', 'taxi', 'terminal', 'thumb-tack', 'thumbs-down', 'thumbs-o-down', 'thumbs-o-up', 'thumbs-up', 'ticket', 'times', 'times-circle',
-        'times-circle-o', 'tint', 'toggle-off', 'toggle-on', 'trash', 'trash-o', 'tree', 'trophy', 'truck', 'tty', 'umbrella', 'university',
-        'unlock', 'unlock-alt', 'upload', 'user', 'user-plus', 'user-secret', 'user-times', 'users', 'video-camera', 'volume-down', 'volume-off',
-        'volume-up', 'wheelchair', 'wifi', 'wrench', 'battery-empty', 'battery-full', 'battery-half', 'battery-quarter', 'battery-three-quarters', // 'battery-0', 'battery-1', 'battery-2', 'battery-3', 'battery-4' // Alias
-        'balance-scale', 'calendar-check-o', 'calendar-minus-o', 'calendar-plus-o', 'calendar-times-o', 'clone', 'commenting', 'commenting-o',
-        'creative-commons', 'hand-lizard-o', 'hand-paper-o', 'hand-peace-o', 'hand-pointer-o', 'hand-rock-o', 'hand-scissors-o', 'hand-spock-o',
-        'hourglass', 'hourglass-end', 'hourglass-half', 'hourglass-o', 'hourglass-start', 'i-cursor', 'industry', 'map', 'map-o', 'map-pin', 'map-signs', 'mouse-pointer',
-        'object-group', 'object-ungroup', 'registered', 'sticky-note', 'sticky-note-o', 'television', 'trademark'
+        'adjust',
+        'anchor',
+        'archive',
+        'area-chart',
+        'arrows',
+        'arrows-h',
+        'arrows-v',
+        'asterisk',
+        'at',
+        // 'automobile', // (alias)
+        'balance-scale',
+        'ban',
+        // 'bank', // (alias)
+        'bar-chart',
+        // 'bar-chart-o', // (alias)
+        'barcode',
+        'bars',
+        // 'battery-0', // (alias)
+        // 'battery-1', // (alias)
+        // 'battery-2', // (alias)
+        // 'battery-3', // (alias)
+        // 'battery-4', // (alias)
+        'battery-empty',
+        'battery-full',
+        'battery-half',
+        'battery-quarter',
+        'battery-three-quarters',
+        'bed',
+        'beer',
+        'bell',
+        'bell-o',
+        'bell-slash',
+        'bell-slash-o',
+        'bicycle',
+        'binoculars',
+        'birthday-cake',
+        'bluetooth',
+        'bluetooth-b',
+        'bolt',
+        'bomb',
+        'book',
+        'bookmark',
+        'bookmark-o',
+        'briefcase',
+        'bug',
+        'building',
+        'building-o',
+        'bullhorn',
+        'bullseye',
+        'bus',
+        // 'cab', // (alias)
+        'calculator',
+        'calendar',
+        'calendar-check-o',
+        'calendar-minus-o',
+        'calendar-o',
+        'calendar-plus-o',
+        'calendar-times-o',
+        'camera',
+        'camera-retro',
+        'car',
+        'caret-square-o-down',
+        'caret-square-o-left',
+        'caret-square-o-right',
+        'caret-square-o-up',
+        'cart-arrow-down',
+        'cart-plus',
+        'cc',
+        'certificate',
+        'check',
+        'check-circle',
+        'check-circle-o',
+        'check-square',
+        'check-square-o',
+        'child',
+        'circle',
+        'circle-o',
+        'circle-o-notch',
+        'circle-thin',
+        'clock-o',
+        'clone',
+        // 'close', // (alias)
+        'cloud',
+        'cloud-download',
+        'cloud-upload',
+        'code',
+        'code-fork',
+        'coffee',
+        'cog',
+        'cogs',
+        'comment',
+        'comment-o',
+        'commenting',
+        'commenting-o',
+        'comments',
+        'comments-o',
+        'compass',
+        'copyright',
+        'creative-commons',
+        'credit-card',
+        'crop',
+        'crosshairs',
+        'cube',
+        'cubes',
+        'cutlery',
+        // 'dashboard', // (alias)
+        'database',
+        'desktop',
+        'diamond',
+        'dot-circle-o',
+        'download',
+        // 'edit', // (alias)
+        'ellipsis-h',
+        'ellipsis-v',
+        'envelope',
+        'envelope-o',
+        'envelope-square',
+        'eraser',
+        'exchange',
+        'exclamation',
+        'exclamation-circle',
+        'exclamation-triangle',
+        'external-link',
+        'external-link-square',
+        'eye',
+        'eye-slash',
+        'eyedropper',
+        'fax',
+        // 'feed', // (alias)
+        'female',
+        'fighter-jet',
+        'file-archive-o',
+        'file-audio-o',
+        'file-code-o',
+        'file-excel-o',
+        'file-image-o',
+        // 'file-movie-o', // (alias)
+        'file-pdf-o',
+        // 'file-photo-o', // (alias)
+        'file-picture-o', // (alias)
+        'file-powerpoint-o',
+        'file-sound-o', // (alias)
+        'file-video-o',
+        'file-word-o',
+        'file-zip-o', // (alias)
+        'film',
+        'filter',
+        'fire',
+        'fire-extinguisher',
+        'flag',
+        'flag-checkered',
+        'flag-o',
+        // 'flash', // (alias)
+        'flask',
+        'folder',
+        'folder-o',
+        'folder-open',
+        'folder-open-o',
+        'frown-o',
+        'futbol-o',
+        'gamepad',
+        'gavel',
+        // 'gear', // (alias)
+        // 'gears', // (alias)
+        'gift',
+        'glass',
+        'globe',
+        'graduation-cap',
+        // 'group', // (alias)
+        // 'hand-grab-o', // (alias)
+        'hand-lizard-o',
+        'hand-paper-o',
+        'hand-peace-o',
+        'hand-pointer-o',
+        'hand-rock-o',
+        'hand-scissors-o',
+        'hand-spock-o',
+        // 'hand-stop-o', // (alias)
+        'hashtag',
+        'hdd-o',
+        'headphones',
+        'heart',
+        'heart-o',
+        'heartbeat',
+        'history',
+        'home',
+        // 'hotel', // (alias)
+        'hourglass',
+        // 'hourglass-1', // (alias)
+        // 'hourglass-2', // (alias)
+        // 'hourglass-3', //  (alias)
+        'hourglass-end',
+        'hourglass-half',
+        'hourglass-o',
+        'hourglass-start',
+        'i-cursor',
+        // 'image', // (alias)
+        'inbox',
+        'industry',
+        'info',
+        'info-circle',
+        // 'institution', // (alias)
+        'key',
+        'keyboard-o',
+        'language',
+        'laptop',
+        'leaf',
+        // 'legal', // (alias)
+        'lemon-o',
+        'level-down',
+        'level-up',
+        // 'life-bouy', // (alias)
+        // 'life-buoy', // (alias)
+        'life-ring',
+        // 'life-saver', // (alias)
+        'lightbulb-o',
+        'line-chart',
+        'location-arrow',
+        'lock',
+        'magic',
+        'magnet',
+        // 'mail-forward', // (alias)
+        // 'mail-reply', // (alias)
+        // 'mail-reply-all', // (alias)
+        'male',
+        'map',
+        'map-marker',
+        'map-o',
+        'map-pin',
+        'map-signs',
+        'meh-o',
+        'microphone',
+        'microphone-slash',
+        'minus',
+        'minus-circle',
+        'minus-square',
+        'minus-square-o',
+        'mobile',
+        'mobile-phone', //  (alias)
+        'money',
+        'moon-o',
+        'mortar-board', // (alias)
+        'motorcycle',
+        'mouse-pointer',
+        'music',
+        'navicon', // (alias)
+        'newspaper-o',
+        'object-group',
+        'object-ungroup',
+        'paint-brush',
+        'paper-plane',
+        'paper-plane-o',
+        'paw',
+        'pencil',
+        'pencil-square',
+        'pencil-square-o',
+        'percent',
+        'phone',
+        'phone-square',
+        // 'photo', // (alias)
+        'picture-o',
+        'pie-chart',
+        'plane',
+        'plug',
+        'plus',
+        'plus-circle',
+        'plus-square',
+        'plus-square-o',
+        'power-off',
+        'print',
+        'puzzle-piece',
+        'qrcode',
+        'question',
+        'question-circle',
+        'quote-left',
+        'quote-right',
+        'random',
+        'recycle',
+        'refresh',
+        'registered',
+        // 'remove', // (alias)
+        // 'reorder', // (alias)
+        'reply',
+        'reply-all',
+        'retweet',
+        'road',
+        'rocket',
+        'rss',
+        'rss-square',
+        'search',
+        'search-minus',
+        'search-plus',
+        // 'send', // (alias)
+        // 'send-o', // (alias)
+        'server',
+        'share',
+        'share-alt',
+        'share-alt-square',
+        'share-square',
+        'share-square-o',
+        'shield',
+        'ship',
+        'shopping-bag',
+        'shopping-basket',
+        'shopping-cart',
+        'sign-in',
+        'sign-out',
+        'signal',
+        'sitemap',
+        'sliders',
+        'smile-o',
+        // 'soccer-ball-o', // (alias)
+        'sort',
+        'sort-alpha-asc',
+        'sort-alpha-desc',
+        'sort-amount-asc',
+        'sort-amount-desc',
+        'sort-asc',
+        'sort-desc',
+        // 'sort-down', // (alias)
+        'sort-numeric-asc',
+        'sort-numeric-desc',
+        // 'sort-up', // (alias)
+        'space-shuttle',
+        'spinner',
+        'spoon',
+        'square',
+        'square-o',
+        'star',
+        'star-half',
+        // 'star-half-empty', // (alias)
+        // 'star-half-full', // (alias)
+        'star-half-o',
+        'star-o',
+        'sticky-note',
+        'sticky-note-o',
+        'street-view',
+        'suitcase',
+        'sun-o',
+        // 'support', // (alias)
+        'tablet',
+        'tachometer',
+        'tag',
+        'tags',
+        'tasks',
+        'taxi',
+        'television',
+        'terminal',
+        'thumb-tack',
+        'thumbs-down',
+        'thumbs-o-down',
+        'thumbs-o-up',
+        'thumbs-up',
+        'ticket',
+        'times',
+        'times-circle',
+        'times-circle-o',
+        'tint',
+        // 'toggle-down', // (alias)
+        // 'toggle-left', // (alias)
+        'toggle-off',
+        'toggle-on',
+        // 'toggle-right', // (alias)
+        // 'toggle-up', // (alias)
+        'trademark',
+        'trash',
+        'trash-o',
+        'tree',
+        'trophy',
+        'truck',
+        'tty',
+        // 'tv', // (alias)
+        'umbrella',
+        'university',
+        'unlock',
+        'unlock-alt',
+        'unsorted', // (alias)
+        'upload',
+        'user',
+        'user-plus',
+        'user-secret',
+        'user-times',
+        'users',
+        'video-camera',
+        'volume-down',
+        'volume-off',
+        'volume-up',
+        // 'warning', // (alias)
+        'wheelchair',
+        'wifi',
+        'wrench'
     )
 );
 
@@ -52,8 +412,23 @@ $FontAwesomeIcons['web-application-icons'] = array(
 $FontAwesomeIcons['hand-icons'] = array(
     'title' => __('Hand Icons'),
     'icons' => array(
-        'hand-lizard-o', 'hand-o-down', 'hand-o-left', 'hand-o-right', 'hand-o-up', 'hand-paper-o', 'hand-peace-o', 'hand-pointer-o', 'hand-rock-o', 'hand-scissors-o',
-        'hand-spock-o', 'thumbs-down', 'thumbs-o-down', 'thumbs-o-up', 'thumbs-up'
+        // 'hand-grab-o', // (alias)
+        'hand-lizard-o',
+        'hand-o-down',
+        'hand-o-left',
+        'hand-o-right',
+        'hand-o-up',
+        'hand-paper-o',
+        'hand-peace-o',
+        'hand-pointer-o',
+        'hand-rock-o',
+        'hand-scissors-o',
+        'hand-spock-o',
+        // 'hand-stop-o', // (alias)
+        'thumbs-down',
+        'thumbs-o-down',
+        'thumbs-o-up',
+        'thumbs-up'
     )
 );
 
@@ -63,7 +438,23 @@ $FontAwesomeIcons['hand-icons'] = array(
 $FontAwesomeIcons['transportation-icons'] = array(
     'title' => __('Transportation Icons'),
     'icons' => array(
-        'ambulance', 'bicycle', 'bus', 'car', 'fighter-jet', 'motorcycle', 'plane', 'rocket', 'ship', 'space-shuttle', 'subway', 'taxi', 'train', 'truck', 'wheelchair'
+        'ambulance',
+        // 'automobile', // (alias)
+        'bicycle',
+        'bus',
+        // 'cab', // (alias)
+        'car',
+        'fighter-jet',
+        'motorcycle',
+        'plane',
+        'rocket',
+        'ship',
+        'space-shuttle',
+        'subway',
+        'taxi',
+        'train',
+        'truck',
+        'wheelchair'
     )
 );
 
@@ -73,7 +464,20 @@ $FontAwesomeIcons['transportation-icons'] = array(
 $FontAwesomeIcons['gender-icons'] = array(
     'title' => __('Gender Icons'),
     'icons' => array(
-        'circle-thin', 'mars', 'mars-double', 'mars-stroke', 'mars-stroke-h', 'mars-stroke-v', 'mercury', 'neuter', 'transgender', 'transgender-alt', 'venus', 'venus-double', 'venus-mars', 'genderless'
+        'genderless',
+        // 'intersex', // (alias)
+        'mars',
+        'mars-double',
+        'mars-stroke',
+        'mars-stroke-h',
+        'mars-stroke-v',
+        'mercury',
+        'neuter',
+        'transgender',
+        'transgender-alt',
+        'venus',
+        'venus-double',
+        'venus-mars',
     )
 );
 
@@ -83,7 +487,24 @@ $FontAwesomeIcons['gender-icons'] = array(
 $FontAwesomeIcons['file-type-icons'] = array(
     'title' => __('File Type Icons'),
     'icons' => array(
-        'file', 'file-archive-o', 'file-audio-o', 'file-code-o', 'file-excel-o', 'file-image-o', 'file-o', 'file-pdf-o', 'file-powerpoint-o', 'file-text', 'file-text-o', 'file-video-o', 'file-word-o'
+        'file',
+        'file-archive-o',
+        'file-audio-o',
+        'file-code-o',
+        'file-excel-o',
+        'file-image-o',
+        // 'file-movie-o', // (alias)
+        'file-o',
+        'file-pdf-o',
+        // 'file-photo-o', // (alias)
+        // 'file-picture-o', // (alias)
+        'file-powerpoint-o',
+        // 'file-sound-o', // (alias)
+        'file-text',
+        'file-text-o',
+        'file-video-o',
+        'file-word-o',
+        // 'file-zip-o', // (alias)
     )
 );
 
@@ -93,7 +514,11 @@ $FontAwesomeIcons['file-type-icons'] = array(
 $FontAwesomeIcons['spinner-icons'] = array(
     'title' => __('Spinner Icons'),
     'icons' => array(
-        'circle-o-notch', 'cog', 'spinner'
+        'circle-o-notch',
+        'cog',
+        // 'gear', // (alias)
+        'refresh',
+        'spinner'
     )
 );
 
@@ -103,7 +528,17 @@ $FontAwesomeIcons['spinner-icons'] = array(
 $FontAwesomeIcons['form-control-icons'] = array(
     'title' => __('Form Control Icons'),
     'icons' => array(
-        'check-square', 'check-square-o', 'circle', 'circle-o', 'dot-circle-o', 'minus-square', 'minus-square-o', 'plus-square', 'plus-square-o', 'square', 'square-o'
+        'check-square',
+        'check-square-o',
+        'circle',
+        'circle-o',
+        'dot-circle-o',
+        'minus-square',
+        'minus-square-o',
+        'plus-square',
+        'plus-square-o',
+        'square',
+        'square-o'
     )
 );
 
@@ -113,7 +548,18 @@ $FontAwesomeIcons['form-control-icons'] = array(
 $FontAwesomeIcons['payment-icons'] = array(
     'title' => __('Payment Icons'),
     'icons' => array(
-        'cc-amex', 'cc-discover', 'cc-mastercard', 'cc-paypal', 'cc-stripe', 'cc-visa', 'credit-card', 'google-wallet', 'paypal', 'cc-diners-club', 'cc-jcb'
+        'cc-amex',
+        'cc-diners-club',
+        'cc-discover',
+        'cc-jcb',
+        'cc-mastercard',
+        'cc-paypal',
+        'cc-stripe',
+        'cc-visa',
+        'credit-card',
+        'credit-card-alt',
+        'google-wallet',
+        'paypal'
     )
 );
 
@@ -123,7 +569,11 @@ $FontAwesomeIcons['payment-icons'] = array(
 $FontAwesomeIcons['chart-icons'] = array(
     'title' => __('Chart Icons'),
     'icons' => array(
-        'area-chart', 'bar-chart', 'line-chart', 'pie-chart'
+        'area-chart',
+        'bar-chart',
+        // 'bar-chart-o', //  (alias)
+        'line-chart',
+        'pie-chart'
     )
 );
 
@@ -133,7 +583,32 @@ $FontAwesomeIcons['chart-icons'] = array(
 $FontAwesomeIcons['currency-icons'] = array(
     'title' => __('Currency Icons'),
     'icons' => array(
-        'btc', 'eur', 'gbp', 'ils', 'inr', 'jpy', 'krw', 'money', 'rub', 'try', 'usd', 'gg', 'gg-circle'
+        // 'bitcoin', // (alias)
+        'btc',
+        // 'cny', // (alias)
+        // 'dollar', // (alias)
+        'eur',
+        // 'euro', // (alias)
+        'gbp',
+        'gg',
+        'gg-circle',
+        'ils',
+        'inr',
+        'jpy',
+        'krw',
+        'money',
+        // 'rmb', // (alias)
+        // 'rouble', // (alias)
+        'rub',
+        // 'ruble', // (alias)
+        // 'rupee', //  (alias)
+        // 'shekel', // (alias)
+        // 'sheqel', // (alias)
+        'try',
+        // 'turkish-lira', // (alias)
+        'usd',
+        // 'won', // (alias)
+        // 'yen', // (alias)
     )
 );
 
@@ -143,10 +618,55 @@ $FontAwesomeIcons['currency-icons'] = array(
 $FontAwesomeIcons['text-editor-icons'] = array(
     'title' => __('Text Editor Icons'),
     'icons' => array(
-        'align-center', 'align-justify', 'align-left', 'align-right', 'bold', 'chain-broken', 'clipboard', 'columns', 'eraser',
-        'file', 'file-o', 'file-text', 'file-text-o', 'files-o', 'floppy-o', 'font', 'header', 'indent', 'italic', 'link', 'list', 'list-alt',
-        'list-ol', 'list-ul', 'outdent', 'paperclip', 'paragraph', 'repeat', 'scissors', 'strikethrough', 'subscript', 'superscript', 'table',
-        'text-height', 'text-width', 'th', 'th-large', 'th-list', 'underline', 'undo', 'unlink'
+        'align-center',
+        'align-justify',
+        'align-left',
+        'align-right',
+        'bold',
+        // 'chain', // (alias)
+        'chain-broken',
+        'clipboard',
+        'columns',
+        // 'copy', // (alias)
+        // 'cut', // (alias)
+        // 'dedent', // (alias)
+        'eraser',
+        'file',
+        'file-o',
+        'file-text',
+        'file-text-o',
+        'files-o',
+        'floppy-o',
+        'font',
+        'header',
+        'indent',
+        'italic',
+        'link',
+        'list',
+        'list-alt',
+        'list-ol',
+        'list-ul',
+        'outdent',
+        'paperclip',
+        'paragraph',
+        // 'paste', // (alias)
+        'repeat',
+        // 'rotate-left', // (alias)
+        // 'rotate-right', // (alias)
+        // 'save', // (alias)
+        'scissors',
+        'strikethrough',
+        'subscript',
+        'superscript',
+        'table',
+        'text-height',
+        'text-width',
+        'th',
+        'th-large',
+        'th-list',
+        'underline',
+        'undo',
+        // 'unlink' // (alias)
     )
 );
 
@@ -156,12 +676,59 @@ $FontAwesomeIcons['text-editor-icons'] = array(
 $FontAwesomeIcons['directional-icons'] = array(
     'title' => __('Directional Icons'),
     'icons' => array(
-        'angle-double-down', 'angle-double-left', 'angle-double-right', 'angle-double-up', 'angle-down', 'angle-left', 'angle-right', 'angle-up',
-        'arrow-circle-down', 'arrow-circle-left', 'arrow-circle-o-down', 'arrow-circle-o-left', 'arrow-circle-o-right', 'arrow-circle-o-up', 'arrow-circle-right',
-        'arrow-circle-up', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrows', 'arrows-alt', 'arrows-h', 'arrows-v', 'caret-down', 'caret-left',
-        'caret-right', 'caret-square-o-down', 'caret-square-o-left', 'caret-square-o-right', 'caret-square-o-up', 'caret-up', 'chevron-circle-down',
-        'chevron-circle-left', 'chevron-circle-right', 'chevron-circle-up', 'chevron-down', 'chevron-left', 'chevron-right', 'chevron-up', 'hand-o-down',
-        'hand-o-left', 'hand-o-right', 'hand-o-up', 'long-arrow-down', 'long-arrow-left', 'long-arrow-right', 'long-arrow-up'
+        'angle-double-down',
+        'angle-double-left',
+        'angle-double-right',
+        'angle-double-up',
+        'angle-down',
+        'angle-left',
+        'angle-right',
+        'angle-up',
+        'arrow-circle-down',
+        'arrow-circle-left',
+        'arrow-circle-o-down',
+        'arrow-circle-o-left',
+        'arrow-circle-o-right',
+        'arrow-circle-o-up',
+        'arrow-circle-right',
+        'arrow-circle-up',
+        'arrow-down',
+        'arrow-left',
+        'arrow-right',
+        'arrow-up',
+        'arrows',
+        'arrows-alt',
+        'arrows-h',
+        'arrows-v',
+        'caret-down',
+        'caret-left',
+        'caret-right',
+        'caret-square-o-down',
+        'caret-square-o-left',
+        'caret-square-o-right',
+        'caret-square-o-up',
+        'caret-up',
+        'chevron-circle-down',
+        'chevron-circle-left',
+        'chevron-circle-right',
+        'chevron-circle-up',
+        'chevron-down',
+        'chevron-left',
+        'chevron-right',
+        'chevron-up',
+        'exchange',
+        'hand-o-down',
+        'hand-o-left',
+        'hand-o-right',
+        'hand-o-up',
+        'long-arrow-down',
+        'long-arrow-left',
+        'long-arrow-right',
+        'long-arrow-up',
+        // 'toggle-down', // (alias)
+        // 'toggle-left', // (alias)
+        // 'toggle-right', // (alias)
+        // 'toggle-up' // (alias)
     )
 );
 
@@ -171,8 +738,27 @@ $FontAwesomeIcons['directional-icons'] = array(
 $FontAwesomeIcons['video-player-icons'] = array(
     'title' => __('Video Player Icons'),
     'icons' => array(
-        'arrows-alt', 'backward', 'compress', 'eject', 'expand', 'fast-backward', 'fast-forward', 'forward', 'pause', 'play', 'play-circle', 'play-circle-o',
-        'step-backward', 'step-forward', 'stop', 'youtube-play'
+        'arrows-alt',
+        'backward',
+        'compress',
+        'eject',
+        'expand',
+        'fast-backward',
+        'fast-forward',
+        'forward',
+        'pause',
+        'pause-circle',
+        'pause-circle-o',
+        'play',
+        'play-circle',
+        'play-circle-o',
+        'random',
+        'step-backward',
+        'step-forward',
+        'stop',
+        'stop-circle',
+        'stop-circle-o',
+        'youtube-play'
     )
 );
 
@@ -182,17 +768,163 @@ $FontAwesomeIcons['video-player-icons'] = array(
 $FontAwesomeIcons['brand-icons'] = array(
     'title' => __('Brand Icons'),
     'icons' => array(
-        'adn', 'android', 'apple', 'behance', 'behance-square', 'bitbucket', 'bitbucket-square', 'btc', 'buysellads', 'cc-amex', 'cc-discover', 'cc-mastercard',
-        'cc-paypal', 'cc-stripe', 'cc-visa', 'codepen', 'connectdevelop', 'css3', 'dashcube', 'delicious', 'deviantart', 'digg', 'dribbble', 'dropbox', 'drupal',
-        'empire', 'facebook', 'facebook-official', 'facebook-square', 'flickr', 'forumbee', 'foursquare', 'git', 'git-square', 'github', 'github-alt', 'github-square',
-        'google', 'google-plus', 'google-plus-square', 'google-wallet', 'gratipay', 'hacker-news', 'html5', 'instagram', 'ioxhost', 'joomla', 'jsfiddle', 'lastfm',
-        'lastfm-square', 'leanpub', 'linkedin', 'linkedin-square', 'linux', 'maxcdn', 'meanpath', 'medium', 'openid', 'pagelines', 'paypal', 'pied-piper', 'pied-piper-alt',
-        'pinterest', 'pinterest-p', 'pinterest-square', 'qq', 'rebel', 'reddit', 'reddit-square', 'renren', 'sellsy', 'share-alt', 'share-alt-square', 'shirtsinbulk',
-        'simplybuilt', 'skyatlas', 'skype', 'slack', 'slideshare', 'soundcloud', 'spotify', 'stack-exchange', 'stack-overflow', 'steam', 'steam-square', 'stumbleupon',
-        'stumbleupon-circle', 'tencent-weibo', 'trello', 'tumblr', 'tumblr-square', 'twitch', 'twitter', 'twitter-square', 'viacoin', 'vimeo-square', 'vine',
-        'vk', 'weibo', 'weixin', 'whatsapp', 'windows', 'wordpress', 'xing', 'xing-square', 'yahoo', 'yelp', 'youtube', 'youtube-play', 'youtube-square', '500px', 'amazon',
-        'black-tie', 'cc-diners-club', 'cc-jcb', 'chrome', 'contao', 'expeditedssl', 'firefox', 'fonticons', 'get-pocket', 'gg', 'gg-circle', 'houzz', 'internet-explorer',
-        'odnoklassniki', 'odnoklassniki-square', 'opencart', 'opera', 'optin-monster', 'safari', 'tripadvisor', 'vimeo', 'wikipedia-w', 'y-combinator'
+        '500px',
+        'adn',
+        'amazon',
+        'android',
+        'angellist',
+        'apple',
+        'behance',
+        'behance-square',
+        'bitbucket',
+        'bitbucket-square',
+        // 'bitcoin', // (alias)
+        'black-tie',
+        'bluetooth',
+        'bluetooth-b',
+        'btc',
+        'buysellads',
+        'cc-amex',
+        'cc-diners-club',
+        'cc-discover',
+        'cc-jcb',
+        'cc-mastercard',
+        'cc-paypal',
+        'cc-stripe',
+        'cc-visa',
+        'chrome',
+        'codepen',
+        'codiepie',
+        'connectdevelop',
+        'contao',
+        'credit-card-alt',
+        'css3',
+        'dashcube',
+        'delicious',
+        'deviantart',
+        'digg',
+        'dribbble',
+        'dropbox',
+        'drupal',
+        'edge',
+        'empire',
+        'expeditedssl',
+        'facebook',
+        // 'facebook-f', // (alias)
+        'facebook-official',
+        'facebook-square',
+        'firefox',
+        'flickr',
+        'fonticons',
+        'fort-awesome',
+        'forumbee',
+        'foursquare',
+        // 'ge', // (alias)
+        'get-pocket',
+        'gg',
+        'gg-circle',
+        'git',
+        'git-square',
+        'github',
+        'github-alt',
+        'github-square',
+        // 'gittip', // (alias)
+        'google',
+        'google-plus',
+        'google-plus-square',
+        'google-wallet',
+        'gratipay',
+        'hacker-news',
+        'houzz',
+        'html5',
+        'instagram',
+        'internet-explorer',
+        'ioxhost',
+        'joomla',
+        'jsfiddle',
+        'lastfm',
+        'lastfm-square',
+        'leanpub',
+        'linkedin',
+        'linkedin-square',
+        'linux',
+        'maxcdn',
+        'meanpath',
+        'medium',
+        'mixcloud',
+        'modx',
+        'odnoklassniki',
+        'odnoklassniki-square',
+        'opencart',
+        'openid',
+        'opera',
+        'optin-monster',
+        'pagelines',
+        'paypal',
+        'pied-piper',
+        'pied-piper-alt',
+        'pinterest',
+        'pinterest-p',
+        'pinterest-square',
+        'product-hunt',
+        'qq',
+        // 'ra', // (alias)
+        'rebel',
+        'reddit',
+        'reddit-alien',
+        'reddit-square',
+        'renren',
+        'safari',
+        'scribd',
+        'sellsy',
+        'share-alt',
+        'share-alt-square',
+        'shirtsinbulk',
+        'simplybuilt',
+        'skyatlas',
+        'skype',
+        'slack',
+        'slideshare',
+        'soundcloud',
+        'spotify',
+        'stack-exchange',
+        'stack-overflow',
+        'steam',
+        'steam-square',
+        'stumbleupon',
+        'stumbleupon-circle',
+        'tencent-weibo',
+        'trello',
+        'tripadvisor',
+        'tumblr',
+        'tumblr-square',
+        'twitch',
+        'twitter',
+        'twitter-square',
+        'usb',
+        'viacoin',
+        'vimeo',
+        'vimeo-square',
+        'vine',
+        'vk',
+        // 'wechat', // (alias)
+        'weibo',
+        'weixin',
+        'whatsapp',
+        'wikipedia-w',
+        'windows',
+        'wordpress',
+        'xing',
+        'xing-square',
+        'y-combinator',
+        // 'y-combinator-square', // (alias)
+        'yahoo',
+        // 'yc', // (alias)
+        // 'yc-square', // (alias)
+        'yelp',
+        'youtube',
+        'youtube-play',
+        'youtube-square'
     )
 );
 
@@ -202,7 +934,17 @@ $FontAwesomeIcons['brand-icons'] = array(
 $FontAwesomeIcons['medical-icons'] = array(
     'title' => __('Medical Icons'),
     'icons' => array(
-        'ambulance', 'h-square', 'heart', 'heart-o', 'heartbeat', 'hospital-o', 'medkit', 'plus-square', 'stethoscope', 'user-md', 'wheelchair'
+        'ambulance',
+        'h-square',
+        'heart',
+        'heart-o',
+        'heartbeat',
+        'hospital-o',
+        'medkit',
+        'plus-square',
+        'stethoscope',
+        'user-md',
+        'wheelchair'
     )
 );
 
