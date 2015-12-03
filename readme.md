@@ -1,6 +1,6 @@
 # FieldtypeFontIconPicker
 
-> Module allow you to use Fotn-Awesome (4.4.0) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
+> Module allow you to use Fotn-Awesome (4.5.0) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
 
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
@@ -22,7 +22,7 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Module Using
 
-* [Font-Awesome v4.3](http://fontawesome.io)
+* [Font-Awesome v4.5](http://fontawesome.io)
 * [jQuery fontIconPicker v2.0.0](http://codeb.it/fonticonpicker)
 
 ### Screenshots - InputfieldFontIconPicker input settings
@@ -44,3 +44,23 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 > InputfieldFontIconPicker Categories
 
 ![InputfieldFontIconPicker](http://i61.tinypic.com/66zuyw.jpg)
+
+### Change Logs
+
+* v.0.0.8
+FontAwesome 4.5 update, Improvements and Performance updates
+**Important !** **After update module check your input settings, because i changed input attribute names (This will only effect input options, like theme, category).** Changed loading icon method from input:hidden to select>optgroup>option, added module js file for load and correct icon picker container many changes….
+* v.0.0.7
+FontAwesome updated to 4.4.0
+* v.0.0.6
+Missed... array compatibility for usage, from [$foo, $bar] to array($foo, $bar)
+* v.0.0.5
+Fix for oldest pw versions (Assets file loding scripts moved to inputfieldfonticonpicker module)
+* v.0.0.4
+Array compatibility for usage, from [$foo, $bar] to array($foo, $bar)
+* v.0.0.3
+Small z-index problem solved
+* v.0.0.2
+MarkupFontIconPicker added
+* v.0.0.1
+Start Point
