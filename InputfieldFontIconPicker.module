@@ -8,9 +8,11 @@
  * @projectWebsite	: https://github.com/trk/FieldtypeFontIconPicker
  */
 class InputfieldFontIconPicker extends Inputfield {
+	protected $selectorClass = 'AvbIconPicker';
 	protected $fontLibrary;
 	protected $iconsPath;
 	protected $libraryUrl;
+	protected $prefix;
 
 	protected $attributes = array(
 		'font_library' => 'FontAwesome',
@@ -55,6 +57,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		$this->setAttribute('empty-icon-value', $this->attributes['empty-icon-value']);
 		$this->setAttribute('icons-per-page', $this->attributes['icons-per-page']);
 		$this->setAttribute('has-search', $this->attributes['has-search']);
+		$this->setAttribute('class', $this->selectorClass);
 	}
 
 	/**
@@ -114,7 +117,9 @@ class InputfieldFontIconPicker extends Inputfield {
 			($this->fontLibrary == 'Ionicons' || $this->fontLibrary == 'FontAwesome') &&
 			file_exists($this->iconsPath . $this->fontLibrary . ".php"))
 		{
-			wireIncludeFile($this->iconsPath . $this->fontLibrary);
+			if(!function_exists('InputfieldFontIconPickerIcons')) {
+				wireIncludeFile($this->iconsPath . $this->fontLibrary);
+			}
 
 			return array(
 				// Set & Set Attributes
@@ -147,6 +152,9 @@ class InputfieldFontIconPicker extends Inputfield {
 		// Set merged attributes
 		$this->setAttributes($attributes);
 
+		// Set Prefix
+		$this->setAttribute('prefix', $options['icons']['prefix']);
+
 		// Set Prefixed Value
 		if($this->attr('value')) $this->setAttribute('value', $this->attr('prefix') . $this->attr('value'));
 
@@ -169,7 +177,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		if($options['icons']['categorised'] === TRUE) {
 			$categorised = TRUE;
 			if(array_key_exists($this->attr('category'), $options['icons']['icons'])) {
-				$icons = $options['icons']['icons'][$this->attr('category')];
+				$icons[] = $options['icons']['icons'][$this->attr('category')];
 			} else {
 				$icons = $options['icons']['icons'];
 			}
@@ -177,16 +185,9 @@ class InputfieldFontIconPicker extends Inputfield {
 			$icons = $options['icons']['icons'];
 		}
 
-		// Set JS selector
-		$this->setAttribute('prefix', $options['icons']['prefix']);
-
-		// Set JS selector
-		$this->setAttribute('class', 'AvbIconPicker');
-
 		// Start to build select list
 		$output = "\n<select " . $this->getAttributesString($this->getAttributes()) . ">
 					\n\t<option value=''>" . $this->_('No Icon') . "</option>";
-		// echo "<pre>" . print_r($icons, true) . "</pre>";
 		// Build categorised icon list
 		if($categorised === TRUE) {
 			foreach($icons as $key => $icon) {
