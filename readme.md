@@ -23,7 +23,7 @@ wire()->addHook('InputfieldFontIconPicker::beforeRender', function($event) {
     if($inputName == 'icon_picker') {
 
         /**
-        * Load You custom icons function file
+        * Load your custom icons function file
         * Your array need to be same format with Icons/FontAwesome.php or Icons/Ionicons.php
         * Also you can pass directly an array
         */
