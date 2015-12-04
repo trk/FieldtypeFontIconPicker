@@ -10,7 +10,7 @@ if($my-icon-field) echo "<i class='my-prefix-{$my-icon-field}' />";
 ```
 
 **Hook Before Render Example**
-This example using **/site/templates/admin.php** file fot hook
+This example using **/site/templates/admin.php** file for hook
 ```php
 wire()->addHook('InputfieldFontIconPicker::beforeRender', function($event) {
     if(!$event->return) return;
