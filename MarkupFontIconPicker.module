@@ -13,7 +13,7 @@ class MarkupFontIconPicker extends WireData implements Module {
         return array(
             'title'     => "MarkupFontIconPicker",
             'summary'   => __('Allow you to call icons simply for InputFieldIconPicker inputs.'),
-            'version'   => 8,
+            'version'   => 9,
             'author'    => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
             'href'      => 'https://github.com/trk/FieldtypeFontIconPicker',
             'icon'      => 'flag',
@@ -22,9 +22,7 @@ class MarkupFontIconPicker extends WireData implements Module {
         );
     }
 
-    public function init() {
-
-    }
+    public function init() {}
 
     /**
      * Render Icon Field

@@ -8,13 +8,32 @@
  * @projectWebsite	: https://github.com/trk/FieldtypeFontIconPicker
  */
 class InputfieldFontIconPicker extends Inputfield {
-	protected $attributes = array();
+	protected $fontLibrary;
+	protected $iconsPath;
+	protected $libraryUrl;
+
+	protected $attributes = array(
+		'font_library' => 'FontAwesome',
+		'category' => '',
+		'theme' => 'fip-grey',
+		'empty-icon' => 1,
+		'empty-icon-value' => '',
+		'icons-per-page' => 20,
+		'has-search' => 1
+	);
+
+	protected $icons = array(
+		'title' => '',
+		'version' => '',
+		'categorised' => false,
+		'icons' => array()
+	);
 
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 8,
+			'version' => 9,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -26,14 +45,16 @@ class InputfieldFontIconPicker extends Inputfield {
 
 	public function __construct() {
 		parent::__construct();
-		$this->setAttribute('class', 'AvbIconPicker');
-		$this->setAttribute('prefix', 'fa fa-');
-		$this->setAttribute('category', '');
-		$this->setAttribute('theme', 'fip-grey');
-		$this->setAttribute('empty-icon', 1);
-		$this->setAttribute('empty-icon-value', '');
-		$this->setAttribute('icons-per-page', 20);
-		$this->setAttribute('has-search', 1);
+		$this->iconsPath = $this->config->paths->FieldtypeFontIconPicker . 'Icons/';
+		$this->libraryUrl = $this->config->urls->FieldtypeFontIconPicker . 'Libraries/fontIconPicker-2.0.0/';
+
+		$this->setAttribute('font_library', $this->attributes['font_library']);
+		$this->setAttribute('category', $this->attributes['category']);
+		$this->setAttribute('theme', $this->attributes['theme']);
+		$this->setAttribute('empty-icon', $this->attributes['empty-icon']);
+		$this->setAttribute('empty-icon-value', $this->attributes['empty-icon-value']);
+		$this->setAttribute('icons-per-page', $this->attributes['icons-per-page']);
+		$this->setAttribute('has-search', $this->attributes['has-search']);
 	}
 
 	/**
@@ -41,13 +62,13 @@ class InputfieldFontIconPicker extends Inputfield {
 	 */
 	public function init() {
 		parent::init();
-		$this->attributes = $this->getAttributes();
+
 		$conf = $this->getModuleInfo();
 		$version = (int) $conf['version'];
-		$libraryUrl = "{$this->config->urls->FieldtypeFontIconPicker}Libraries/fontIconPicker-2.0.0/";
 
 		// Load Main Css File
-		$this->config->styles->add("{$libraryUrl}css/jquery.fonticonpicker.css?v={$version}");
+		$this->config->styles->add($this->libraryUrl . "css/jquery.fonticonpicker.css?v=" . $version);
+
 		/**
 		 * Load Themes if Needed
 		 *
@@ -56,13 +77,14 @@ class InputfieldFontIconPicker extends Inputfield {
 		 * fip-bootstrap : A nice icon picker theme
 		 * fip-inverted : Inverted color scheme
 		 */
-		$this->config->styles->add("{$libraryUrl}themes/grey-theme/jquery.fonticonpicker.grey.min.css?v={$version}");
-		$this->config->styles->add("{$libraryUrl}themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v={$version}");
-		$this->config->styles->add("{$libraryUrl}themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v={$version}");
-		$this->config->styles->add("{$libraryUrl}themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v={$version}");
+		$this->config->styles->add($this->libraryUrl . "themes/grey-theme/jquery.fonticonpicker.grey.min.css?v=" . $version);
+		$this->config->styles->add($this->libraryUrl . "themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v=" . $version);
+		$this->config->styles->add($this->libraryUrl . "themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v=" . $version);
+		$this->config->styles->add($this->libraryUrl . "themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v=" . $version);
 
 		// Load Main Js File
-		$this->config->scripts->add("{$libraryUrl}jquery.fonticonpicker.js?v={$version}");
+		$this->config->scripts->add($this->libraryUrl . "jquery.fonticonpicker.js?v=" . $version);
+
 	}
 
 	/**
@@ -80,17 +102,58 @@ class InputfieldFontIconPicker extends Inputfield {
 	}
 
 	/**
+	 * Hookable method for before render
+	 *
+	 * @return array
+	 * @throws WireException
+	 */
+	public function ___beforeRender() {
+		// Load Default Icons
+		$this->fontLibrary = ($this->attr('font_library') == "") ? 'FontAwesome' : $this->attr('font_library');
+		if(
+			($this->fontLibrary == 'Ionicons' || $this->fontLibrary == 'FontAwesome') &&
+			file_exists($this->iconsPath . $this->fontLibrary . ".php"))
+		{
+			wireIncludeFile($this->iconsPath . $this->fontLibrary);
+
+			return array(
+				// Set & Set Attributes
+				'attributes' => $this->getAttributes(),
+				// Get & Set Default Font Library
+				'icons' => InputfieldFontIconPickerIcons()
+			);
+		} else {
+			throw new WireException("Could not find icons path {$this->iconsPath}{$this->fontLibrary}.php");
+		}
+	}
+
+	/**
 	 * Rende InputfieldFontIconPicker
 	 *
 	 * @return string
 	 */
 	public function ___render() {
+		// Get ALL Options
+		$options = $this->beforeRender();
+
+		// If we have a css option, add it to load ProcessWire styles load list
+		if(isset($options['icons']['css']) && $options['icons']['css'] != "") {
+			$this->config->styles->add($options['icons']['css']);
+		}
+
+		// If beforeRender() method hooked this will merge empty attributes
+		$attributes = array_merge($this->getAttributes(), $options['attributes']);
+
+		// Set merged attributes
+		$this->setAttributes($attributes);
+
 		// Set Prefixed Value
 		if($this->attr('value')) $this->setAttribute('value', $this->attr('prefix') . $this->attr('value'));
 
 		// Set check theme is empty?
 		if($this->attr('theme') == '') $this->setAttribute('theme', 'fip-grey');
 
+		// Set min per pege icon value to 20 if less than 1
 		if($this->attr('icons-per-page') < 1) $this->setAttribute('icons-per-page', 20);
 
 		// Set true | false for has-search
@@ -101,63 +164,92 @@ class InputfieldFontIconPicker extends Inputfield {
 		if($this->attr('empty-icon') === 1) $this->setAttribute('empty-icon', 'true');
 		else  $this->setAttribute('empty-icon', 'false');
 
-		$output = "\n<select " . $this->getAttributesString($this->getAttributes()) . ">
-					\n\t<option value=''>" . $this->_('No Icon') . "</option>";
-
-		// Load Icons file as an Array
-		include(wire('config')->paths->FieldtypeFontIconPicker . 'Libraries/Icons.php');
-
-		if($this->attr('category') && array_key_exists($this->attr('category'), $FontAwesomeIcons)) {
-			$icons[] = $FontAwesomeIcons[$this->attr('category')];
+		// Icons are categorised ? Check is category selected ?
+		$categorised = FALSE;
+		if($options['icons']['categorised'] === TRUE) {
+			$categorised = TRUE;
+			if(array_key_exists($this->attr('category'), $options['icons']['icons'])) {
+				$icons = $options['icons']['icons'][$this->attr('category')];
+			} else {
+				$icons = $options['icons']['icons'];
+			}
 		} else {
-			$icons = $FontAwesomeIcons;
+			$icons = $options['icons']['icons'];
 		}
 
-		foreach($icons as $key => $categories) {
-			if(isset($categories['title'])) {
-				$output .= "<optgroup label='{$categories['title']}'>";
-				if(isset($categories['icons'])) {
-					foreach ($categories['icons'] as $k => $icon) {
-						$iconValue = $this->attr('prefix') . $icon;
+		// Set JS selector
+		$this->setAttribute('prefix', $options['icons']['prefix']);
+
+		// Set JS selector
+		$this->setAttribute('class', 'AvbIconPicker');
+
+		// Start to build select list
+		$output = "\n<select " . $this->getAttributesString($this->getAttributes()) . ">
+					\n\t<option value=''>" . $this->_('No Icon') . "</option>";
+		// echo "<pre>" . print_r($icons, true) . "</pre>";
+		// Build categorised icon list
+		if($categorised === TRUE) {
+			foreach($icons as $key => $icon) {
+				$categoryTitle = FALSE;
+				if(isset($icon['title'])) {
+					$output .= "\n\t<optgroup label='{$icon['title']}'>";
+					$categoryTitle = TRUE;
+				}
+				if(isset($icon['icons']) && !empty($icon['icons'])) {
+					foreach($icon['icons'] as $ke => $ic) {
+						$iconValue = $this->attr('prefix') . $ic;
 						$selected = ($this->attr('value') == $iconValue) ? " selected='selected'" : "";
-						$output .= "<option value='{$iconValue}'{$selected}>{$iconValue}</option>";
+						$output .= "\n\t\t<option value='{$iconValue}'{$selected}>{$iconValue}</option>";
 					}
 				}
-				$output .= "</optgroup>";
+				if($categoryTitle) $output .= "\n\t</optgroup>";
+			}
+		} else { // Build non categorised icon list
+			foreach($icons as $key => $icon) {
+				$iconValue = $this->attr('prefix') . $icon;
+				$selected = ($this->attr('value') == $iconValue) ? " selected='selected'" : "";
+				$output .= "\n\t<option value='{$iconValue}'{$selected}>{$iconValue}</option>";
 			}
 		}
 
-		$output .= "</select>";
+		$output .= "\n\t</select>";
 
 		return $output;
 	}
 
 	public function ___getConfigInputfields() {
 		$inputfields = parent::___getConfigInputfields();
+		$options = $this->beforeRender();
+		$icons = $options['icons'];
+		$categorisedStr = ($icons['categorised'] === TRUE) ? 'YES' : 'NO';
 
 		/**
-		 * Prefix
+		 * Icon Library
 		 */
-		$field = $this->modules->get('InputfieldText');
-		$field->setAttribute('name', 'prefix');
-		$field->label = $this->_('Prefix');
-		$field->setAttribute('value', $this->attr('prefix'));
+		$field = $this->modules->get('InputfieldSelect');
+		$field->setAttribute('name', 'font_library');
+		$field->label = __('Font Icon Library');
+		$field->description = __('Select an font icon library.');
+		$field->addOption('FontAwesome', 'Font Awesome', ($this->attr('font_library') == 'FontAwesome') ?  array('selected' => 'selected') : array());
+		$field->addOption('Ionicons', 'Ionicons', ($this->attr('font_library') == 'Ionicons') ?  array('selected' => 'selected') : array());
+		$field->notes = "\nLibary: {$icons['title']}\nVersion: {$icons['version']}\nPrefix: {$icons['prefix']}\nCategorised: {$categorisedStr}\nCSS: {$icons['css']}";
 		$inputfields->append($field);
 
 		/**
 		 * Coregory Select
+		 * If icons categorised ?
 		 */
-		$field = $this->modules->get('InputfieldSelect');
-		$field->setAttribute('name', 'category');
-		$field->label = __('Category');
-		$field->description = __('Select an icon category, if you want a specified category for show.');
-		// Load Icons file as an Array
-		include(wire('config')->paths->FieldtypeFontIconPicker . 'Libraries/Icons.php');
-		foreach($FontAwesomeIcons as $key => $icon) {
-			$selected = ($this->attr('category') && $this->attr('category') == $key) ? ['selected' => 'selected'] : [];
-			$field->addOption($key, $icon['title'], $selected);
+		if($icons['categorised'] === TRUE) {
+			$field = $this->modules->get('InputfieldSelect');
+			$field->setAttribute('name', 'category');
+			$field->label = __('Category');
+			$field->description = __('Select an icon category, if you want a specified category for show.');
+			foreach($icons['icons'] as $key => $icon) {
+				$selected = ($this->attr('category') && $this->attr('category') == $key) ? array('selected' => 'selected') : array();
+				$field->addOption($key, $icon['title'], $selected);
+			}
+			$inputfields->append($field);
 		}
-		$inputfields->append($field);
 
 		/**
 		 * Theme Select
@@ -174,7 +266,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		$field->label = __('Theme');
 		$field->description = __('The theme to be used with the InputfieldFontIconPicker.');
 		foreach($themes as $key => $title) {
-			$selected = ($this->attr('theme') && $this->attr('theme') == $key) ? ['selected' => 'selected'] : [];
+			$selected = ($this->attr('theme') && $this->attr('theme') == $key) ? array('selected' => 'selected') : array();
 			$field->addOption($key, $title, $selected);
 		}
 		$inputfields->append($field);
@@ -186,8 +278,8 @@ class InputfieldFontIconPicker extends Inputfield {
 		$field->setAttribute('name', 'empty-icon');
 		$field->label = __('Empty Icon');
 		$field->description = __('Whether or not empty icon should be shown on the icon picker. If you give your users the option to pick no icon, then leave it enabled.');
-		$field->addOption(1, 'True', ($this->attr('empty-icon')) ? ['selected' => 'selected'] : []);
-		$field->addOption(0, 'False', (!$this->attr('empty-icon')) ? ['selected' => 'selected'] : []);
+		$field->addOption(1, 'True', ($this->attr('empty-icon')) ?  array('selected' => 'selected') : array());
+		$field->addOption(0, 'False', (!$this->attr('empty-icon')) ?  array('selected' => 'selected') : array());
 		$inputfields->append($field);
 
 		/**
@@ -218,8 +310,8 @@ class InputfieldFontIconPicker extends Inputfield {
 		$field->setAttribute('name', 'has-search');
 		$field->label = __('Has Search');
 		$field->description = __('Whether or not to show the search bar. The search result is always non case sensitive. When the fontIconPicker is initiated on a SELECT element, the option labels (or HTML) are used for search, not the option values.');
-		$field->addOption(1, 'True', ($this->attr('has-search')) ? ['selected' => 'selected'] : []);
-		$field->addOption(0, 'False', (!$this->attr('has-search')) ? ['selected' => 'selected'] : []);
+		$field->addOption(1, 'True', ($this->attr('has-search')) ?  array('selected' => 'selected') : array());
+		$field->addOption(0, 'False', (!$this->attr('has-search')) ?  array('selected' => 'selected') : array());
 		$inputfields->add($field);
 
 		return $inputfields;
