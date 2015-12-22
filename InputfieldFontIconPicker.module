@@ -16,6 +16,7 @@ class InputfieldFontIconPicker extends Inputfield {
 
 	protected $attributes = array(
 		'font_library' => 'FontAwesome',
+		'custom_css_url' => '',
 		'category' => '',
 		'theme' => 'fip-grey',
 		'empty-icon' => 1,
@@ -35,7 +36,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 9,
+			'version' => 10,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -142,7 +143,9 @@ class InputfieldFontIconPicker extends Inputfield {
 		$options = $this->beforeRender();
 
 		// If we have a css option, add it to load ProcessWire styles load list
-		if(isset($options['icons']['css']) && $options['icons']['css'] != "") {
+		if($this->custom_css_url != "") {
+			$this->config->styles->add($this->custom_css_url);
+		} elseif(isset($options['icons']['css']) && $options['icons']['css'] != "") {
 			$this->config->styles->add($options['icons']['css']);
 		}
 
@@ -234,6 +237,16 @@ class InputfieldFontIconPicker extends Inputfield {
 		$field->addOption('FontAwesome', 'Font Awesome', ($this->attr('font_library') == 'FontAwesome') ?  array('selected' => 'selected') : array());
 		$field->addOption('Ionicons', 'Ionicons', ($this->attr('font_library') == 'Ionicons') ?  array('selected' => 'selected') : array());
 		$field->notes = "\nLibary: {$icons['title']}\nVersion: {$icons['version']}\nPrefix: {$icons['prefix']}\nCategorised: {$categorisedStr}\nCSS: {$icons['css']}";
+		$inputfields->append($field);
+
+		/**
+		 * Custom CSS Url
+		 */
+		$field = $this->modules->get('InputfieldText');
+		$field->setAttribute('name', 'custom_css_url');
+		$field->setAttribute('value', $this->attr('custom_css_url'));
+		$field->label = __('Custom CSS URL');
+		$field->description = __('If this field empty, above css url will be used for selected Font Icon Library');
 		$inputfields->append($field);
 
 		/**
