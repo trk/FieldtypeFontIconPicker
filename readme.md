@@ -5,12 +5,56 @@
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
 **Example :**
-```
+```php
 if($my-icon-field) echo "<i class='my-prefix-{$my-icon-field}' />";
 ```
 
-### MarkupFontIconPicker Usage
+**Hook Before Render Example**
+This example using **/site/templates/admin.php** file for hook
+```php
+wire()->addHook('InputfieldFontIconPicker::beforeRender', function($event) {
+    if(!$event->return) return;
+
+    // Get Input Name (For specified input hook, if you want apply all InputfieldFontIconPicker remove inputName check)
+    $inputName = "";
+    if(isset($event->object->attributes['name'])) $inputName = $event->object->attributes['name'];
+
+    // Get Input Name (For specified input hook, if you want apply all InputfieldFontIconPicker remove inputName check)
+    if($inputName == 'icon_picker') {
+
+        /**
+        * Load your custom icons function file
+        * Your array need to be same format with Icons/FontAwesome.php or Icons/Ionicons.php
+        * Also you can pass directly an array
+        */
+        wireIncludeFile('MyCustomIconFile');
+
+        // Set icons as $icons variable
+        $icons = MyCustomIconsArray();
+
+        // Set your options
+        $return = array(
+            'attributes' => array(
+                'category' => '',
+                'theme' => 'fip-grey',
+                'empty-icon' => 1,
+                'empty-icon-value' => '',
+                'icons-per-page' => 20,
+                'has-search' => 1
+            ),
+            'icons' => $icons
+        );
+
+        // Return the event
+        $event->return = $return;
+    }
+
+    $event->return;
+});
 ```
+
+### MarkupFontIconPicker Usage
+```php
 // MarkupFontIconPicker::render(YourIconField=string, Options=array)
 echo MarkupFontIconPicker::render($page->YourIconField, [
         'prefix' => 'uk-icon-', // Icon class prefix, if you have different prefix, default is : "fa fa-"
@@ -46,6 +90,13 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 ![InputfieldFontIconPicker](http://i61.tinypic.com/66zuyw.jpg)
 
 ### Change Logs
+
+**v.0.0.9**
+
+- Added hook method ___beforeRender(), you can check hook example for usage
+- Added multiple icons library use option
+- Added Ionicons Library
+- Now module using cdn for load icon fonts
 
 **v.0.0.8**
 
