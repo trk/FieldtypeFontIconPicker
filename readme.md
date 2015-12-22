@@ -91,6 +91,10 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Change Logs
 
+**v.0.1.0**
+
+- Added custom css url support
+
 **v.0.0.9**
 
 - Added hook method ___beforeRender(), you can check hook example for usage
