@@ -13,7 +13,7 @@ class FieldtypeFontIconPicker extends Fieldtype {
 		return array(
 			'title' => 'FieldtypeFontIconPicker',
 			'summary' => __('Allow you to use icon picker input field.'),
-			'version' => 10,
+			'version' => 11,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'icon' => 'flag-o',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
