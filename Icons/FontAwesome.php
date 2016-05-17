@@ -11,27 +11,22 @@ function InputfieldFontIconPickerIcons() {
                 'title' => __('Web Application Icons'),
                 'icons' => array(
                     'adjust',
+                    'american-sign-language-interpreting',
                     'anchor',
                     'archive',
                     'area-chart',
                     'arrows',
                     'arrows-h',
                     'arrows-v',
+                    'assistive-listening-systems',
                     'asterisk',
                     'at',
-                    // 'automobile', // (alias)
+                    'audio-description',
                     'balance-scale',
                     'ban',
-                    // 'bank', // (alias)
                     'bar-chart',
-                    // 'bar-chart-o', // (alias)
                     'barcode',
                     'bars',
-                    // 'battery-0', // (alias)
-                    // 'battery-1', // (alias)
-                    // 'battery-2', // (alias)
-                    // 'battery-3', // (alias)
-                    // 'battery-4', // (alias)
                     'battery-empty',
                     'battery-full',
                     'battery-half',
@@ -46,6 +41,7 @@ function InputfieldFontIconPickerIcons() {
                     'bicycle',
                     'binoculars',
                     'birthday-cake',
+                    'blind',
                     'bluetooth',
                     'bluetooth-b',
                     'bolt',
@@ -53,6 +49,7 @@ function InputfieldFontIconPickerIcons() {
                     'book',
                     'bookmark',
                     'bookmark-o',
+                    'braille',
                     'briefcase',
                     'bug',
                     'building',
@@ -60,7 +57,6 @@ function InputfieldFontIconPickerIcons() {
                     'bullhorn',
                     'bullseye',
                     'bus',
-                    // 'cab', // (alias)
                     'calculator',
                     'calendar',
                     'calendar-check-o',
@@ -91,7 +87,6 @@ function InputfieldFontIconPickerIcons() {
                     'circle-thin',
                     'clock-o',
                     'clone',
-                    // 'close', // (alias)
                     'cloud',
                     'cloud-download',
                     'cloud-upload',
@@ -110,18 +105,18 @@ function InputfieldFontIconPickerIcons() {
                     'copyright',
                     'creative-commons',
                     'credit-card',
+                    'credit-card-alt',
                     'crop',
                     'crosshairs',
                     'cube',
                     'cubes',
                     'cutlery',
-                    // 'dashboard', // (alias)
                     'database',
+                    'deaf',
                     'desktop',
                     'diamond',
                     'dot-circle-o',
                     'download',
-                    // 'edit', // (alias)
                     'ellipsis-h',
                     'ellipsis-v',
                     'envelope',
@@ -138,7 +133,6 @@ function InputfieldFontIconPickerIcons() {
                     'eye-slash',
                     'eyedropper',
                     'fax',
-                    // 'feed', // (alias)
                     'female',
                     'fighter-jet',
                     'file-archive-o',
@@ -146,15 +140,10 @@ function InputfieldFontIconPickerIcons() {
                     'file-code-o',
                     'file-excel-o',
                     'file-image-o',
-                    // 'file-movie-o', // (alias)
                     'file-pdf-o',
-                    // 'file-photo-o', // (alias)
-                    'file-picture-o', // (alias)
                     'file-powerpoint-o',
-                    'file-sound-o', // (alias)
                     'file-video-o',
                     'file-word-o',
-                    'file-zip-o', // (alias)
                     'film',
                     'filter',
                     'fire',
@@ -162,7 +151,6 @@ function InputfieldFontIconPickerIcons() {
                     'flag',
                     'flag-checkered',
                     'flag-o',
-                    // 'flash', // (alias)
                     'flask',
                     'folder',
                     'folder-o',
@@ -172,14 +160,10 @@ function InputfieldFontIconPickerIcons() {
                     'futbol-o',
                     'gamepad',
                     'gavel',
-                    // 'gear', // (alias)
-                    // 'gears', // (alias)
                     'gift',
                     'glass',
                     'globe',
                     'graduation-cap',
-                    // 'group', // (alias)
-                    // 'hand-grab-o', // (alias)
                     'hand-lizard-o',
                     'hand-paper-o',
                     'hand-peace-o',
@@ -187,7 +171,6 @@ function InputfieldFontIconPickerIcons() {
                     'hand-rock-o',
                     'hand-scissors-o',
                     'hand-spock-o',
-                    // 'hand-stop-o', // (alias)
                     'hashtag',
                     'hdd-o',
                     'headphones',
@@ -196,44 +179,32 @@ function InputfieldFontIconPickerIcons() {
                     'heartbeat',
                     'history',
                     'home',
-                    // 'hotel', // (alias)
                     'hourglass',
-                    // 'hourglass-1', // (alias)
-                    // 'hourglass-2', // (alias)
-                    // 'hourglass-3', //  (alias)
                     'hourglass-end',
                     'hourglass-half',
                     'hourglass-o',
                     'hourglass-start',
                     'i-cursor',
-                    // 'image', // (alias)
                     'inbox',
                     'industry',
                     'info',
                     'info-circle',
-                    // 'institution', // (alias)
                     'key',
                     'keyboard-o',
                     'language',
                     'laptop',
                     'leaf',
-                    // 'legal', // (alias)
                     'lemon-o',
                     'level-down',
                     'level-up',
-                    // 'life-bouy', // (alias)
-                    // 'life-buoy', // (alias)
                     'life-ring',
-                    // 'life-saver', // (alias)
                     'lightbulb-o',
                     'line-chart',
                     'location-arrow',
                     'lock',
+                    'low-vision',
                     'magic',
                     'magnet',
-                    // 'mail-forward', // (alias)
-                    // 'mail-reply', // (alias)
-                    // 'mail-reply-all', // (alias)
                     'male',
                     'map',
                     'map-marker',
@@ -248,14 +219,11 @@ function InputfieldFontIconPickerIcons() {
                     'minus-square',
                     'minus-square-o',
                     'mobile',
-                    'mobile-phone', //  (alias)
                     'money',
                     'moon-o',
-                    'mortar-board', // (alias)
                     'motorcycle',
                     'mouse-pointer',
                     'music',
-                    'navicon', // (alias)
                     'newspaper-o',
                     'object-group',
                     'object-ungroup',
@@ -269,7 +237,6 @@ function InputfieldFontIconPickerIcons() {
                     'percent',
                     'phone',
                     'phone-square',
-                    // 'photo', // (alias)
                     'picture-o',
                     'pie-chart',
                     'plane',
@@ -284,14 +251,13 @@ function InputfieldFontIconPickerIcons() {
                     'qrcode',
                     'question',
                     'question-circle',
+                    'question-circle-o',
                     'quote-left',
                     'quote-right',
                     'random',
                     'recycle',
                     'refresh',
                     'registered',
-                    // 'remove', // (alias)
-                    // 'reorder', // (alias)
                     'reply',
                     'reply-all',
                     'retweet',
@@ -302,8 +268,6 @@ function InputfieldFontIconPickerIcons() {
                     'search',
                     'search-minus',
                     'search-plus',
-                    // 'send', // (alias)
-                    // 'send-o', // (alias)
                     'server',
                     'share',
                     'share-alt',
@@ -316,12 +280,12 @@ function InputfieldFontIconPickerIcons() {
                     'shopping-basket',
                     'shopping-cart',
                     'sign-in',
+                    'sign-language',
                     'sign-out',
                     'signal',
                     'sitemap',
                     'sliders',
                     'smile-o',
-                    // 'soccer-ball-o', // (alias)
                     'sort',
                     'sort-alpha-asc',
                     'sort-alpha-desc',
@@ -329,10 +293,8 @@ function InputfieldFontIconPickerIcons() {
                     'sort-amount-desc',
                     'sort-asc',
                     'sort-desc',
-                    // 'sort-down', // (alias)
                     'sort-numeric-asc',
                     'sort-numeric-desc',
-                    // 'sort-up', // (alias)
                     'space-shuttle',
                     'spinner',
                     'spoon',
@@ -340,8 +302,6 @@ function InputfieldFontIconPickerIcons() {
                     'square-o',
                     'star',
                     'star-half',
-                    // 'star-half-empty', // (alias)
-                    // 'star-half-full', // (alias)
                     'star-half-o',
                     'star-o',
                     'sticky-note',
@@ -349,7 +309,6 @@ function InputfieldFontIconPickerIcons() {
                     'street-view',
                     'suitcase',
                     'sun-o',
-                    // 'support', // (alias)
                     'tablet',
                     'tachometer',
                     'tag',
@@ -368,12 +327,8 @@ function InputfieldFontIconPickerIcons() {
                     'times-circle',
                     'times-circle-o',
                     'tint',
-                    // 'toggle-down', // (alias)
-                    // 'toggle-left', // (alias)
                     'toggle-off',
                     'toggle-on',
-                    // 'toggle-right', // (alias)
-                    // 'toggle-up', // (alias)
                     'trademark',
                     'trash',
                     'trash-o',
@@ -381,12 +336,11 @@ function InputfieldFontIconPickerIcons() {
                     'trophy',
                     'truck',
                     'tty',
-                    // 'tv', // (alias)
                     'umbrella',
+                    'universal-access',
                     'university',
                     'unlock',
                     'unlock-alt',
-                    'unsorted', // (alias)
                     'upload',
                     'user',
                     'user-plus',
@@ -394,11 +348,12 @@ function InputfieldFontIconPickerIcons() {
                     'user-times',
                     'users',
                     'video-camera',
+                    'volume-control-phone',
                     'volume-down',
                     'volume-off',
                     'volume-up',
-                    // 'warning', // (alias)
                     'wheelchair',
+                    'wheelchair-alt',
                     'wifi',
                     'wrench'
                 )
@@ -406,7 +361,6 @@ function InputfieldFontIconPickerIcons() {
             'hand-icons' => array(
                 'title' => __('Hand Icons'),
                 'icons' => array(
-                    // 'hand-grab-o', // (alias)
                     'hand-lizard-o',
                     'hand-o-down',
                     'hand-o-left',
@@ -418,7 +372,6 @@ function InputfieldFontIconPickerIcons() {
                     'hand-rock-o',
                     'hand-scissors-o',
                     'hand-spock-o',
-                    // 'hand-stop-o', // (alias)
                     'thumbs-down',
                     'thumbs-o-down',
                     'thumbs-o-up',
@@ -429,10 +382,8 @@ function InputfieldFontIconPickerIcons() {
                 'title' => __('Transportation Icons'),
                 'icons' => array(
                     'ambulance',
-                    // 'automobile', // (alias)
                     'bicycle',
                     'bus',
-                    // 'cab', // (alias)
                     'car',
                     'fighter-jet',
                     'motorcycle',
@@ -451,7 +402,6 @@ function InputfieldFontIconPickerIcons() {
                 'title' => __('Gender Icons'),
                 'icons' => array(
                     'genderless',
-                    // 'intersex', // (alias)
                     'mars',
                     'mars-double',
                     'mars-stroke',
@@ -463,7 +413,7 @@ function InputfieldFontIconPickerIcons() {
                     'transgender-alt',
                     'venus',
                     'venus-double',
-                    'venus-mars',
+                    'venus-mars'
                 )
             ),
             'file-type-icons' => array(
@@ -475,18 +425,13 @@ function InputfieldFontIconPickerIcons() {
                     'file-code-o',
                     'file-excel-o',
                     'file-image-o',
-                    // 'file-movie-o', // (alias)
                     'file-o',
                     'file-pdf-o',
-                    // 'file-photo-o', // (alias)
-                    // 'file-picture-o', // (alias)
                     'file-powerpoint-o',
-                    // 'file-sound-o', // (alias)
                     'file-text',
                     'file-text-o',
                     'file-video-o',
-                    'file-word-o',
-                    // 'file-zip-o', // (alias)
+                    'file-word-o'
                 )
             ),
             'spinner-icons' => array(
@@ -494,7 +439,6 @@ function InputfieldFontIconPickerIcons() {
                 'icons' => array(
                     'circle-o-notch',
                     'cog',
-                    // 'gear', // (alias)
                     'refresh',
                     'spinner'
                 )
@@ -537,7 +481,6 @@ function InputfieldFontIconPickerIcons() {
                 'icons' => array(
                     'area-chart',
                     'bar-chart',
-                    // 'bar-chart-o', //  (alias)
                     'line-chart',
                     'pie-chart'
                 )
@@ -545,12 +488,8 @@ function InputfieldFontIconPickerIcons() {
             'currency-icons' => array(
                 'title' => __('Currency Icons'),
                 'icons' => array(
-                    // 'bitcoin', // (alias)
                     'btc',
-                    // 'cny', // (alias)
-                    // 'dollar', // (alias)
                     'eur',
-                    // 'euro', // (alias)
                     'gbp',
                     'gg',
                     'gg-circle',
@@ -559,18 +498,29 @@ function InputfieldFontIconPickerIcons() {
                     'jpy',
                     'krw',
                     'money',
-                    // 'rmb', // (alias)
-                    // 'rouble', // (alias)
                     'rub',
-                    // 'ruble', // (alias)
-                    // 'rupee', //  (alias)
-                    // 'shekel', // (alias)
-                    // 'sheqel', // (alias)
                     'try',
-                    // 'turkish-lira', // (alias)
-                    'usd',
-                    // 'won', // (alias)
-                    // 'yen', // (alias)
+                    'usd'
+                )
+            ),
+            'accessibility-icons' => array(
+                'title' => __('Accessibility Icons'),
+                'icons' => array(
+                    'american-sign-language-interpreting',
+                    'assistive-listening-systems',
+                    'audio-description',
+                    'blind',
+                    'braille',
+                    'cc',
+                    'deaf',
+                    'low-vision',
+                    'question-circle-o',
+                    'sign-language',
+                    'tty',
+                    'universal-access',
+                    'volume-control-phone',
+                    'wheelchair',
+                    'wheelchair-alt'
                 )
             ),
             'text-editor-icons' => array(
@@ -581,13 +531,9 @@ function InputfieldFontIconPickerIcons() {
                     'align-left',
                     'align-right',
                     'bold',
-                    // 'chain', // (alias)
                     'chain-broken',
                     'clipboard',
                     'columns',
-                    // 'copy', // (alias)
-                    // 'cut', // (alias)
-                    // 'dedent', // (alias)
                     'eraser',
                     'file',
                     'file-o',
@@ -607,11 +553,7 @@ function InputfieldFontIconPickerIcons() {
                     'outdent',
                     'paperclip',
                     'paragraph',
-                    // 'paste', // (alias)
                     'repeat',
-                    // 'rotate-left', // (alias)
-                    // 'rotate-right', // (alias)
-                    // 'save', // (alias)
                     'scissors',
                     'strikethrough',
                     'subscript',
@@ -623,8 +565,7 @@ function InputfieldFontIconPickerIcons() {
                     'th-large',
                     'th-list',
                     'underline',
-                    'undo',
-                    // 'unlink' // (alias)
+                    'undo'
                 )
             ),
             'directional-icons' => array(
@@ -678,11 +619,7 @@ function InputfieldFontIconPickerIcons() {
                     'long-arrow-down',
                     'long-arrow-left',
                     'long-arrow-right',
-                    'long-arrow-up',
-                    // 'toggle-down', // (alias)
-                    // 'toggle-left', // (alias)
-                    // 'toggle-right', // (alias)
-                    // 'toggle-up' // (alias)
+                    'long-arrow-up'
                 )
             ),
             'video-player-icons' => array(
@@ -724,7 +661,6 @@ function InputfieldFontIconPickerIcons() {
                     'behance-square',
                     'bitbucket',
                     'bitbucket-square',
-                    // 'bitcoin', // (alias)
                     'black-tie',
                     'bluetooth',
                     'bluetooth-b',
@@ -743,7 +679,6 @@ function InputfieldFontIconPickerIcons() {
                     'codiepie',
                     'connectdevelop',
                     'contao',
-                    'credit-card-alt',
                     'css3',
                     'dashcube',
                     'delicious',
@@ -754,18 +689,19 @@ function InputfieldFontIconPickerIcons() {
                     'drupal',
                     'edge',
                     'empire',
+                    'envira',
                     'expeditedssl',
                     'facebook',
-                    // 'facebook-f', // (alias)
                     'facebook-official',
                     'facebook-square',
                     'firefox',
+                    'first-order',
                     'flickr',
+                    'font-awesome',
                     'fonticons',
                     'fort-awesome',
                     'forumbee',
                     'foursquare',
-                    // 'ge', // (alias)
                     'get-pocket',
                     'gg',
                     'gg-circle',
@@ -774,9 +710,12 @@ function InputfieldFontIconPickerIcons() {
                     'github',
                     'github-alt',
                     'github-square',
-                    // 'gittip', // (alias)
+                    'gitlab',
+                    'glide',
+                    'glide-g',
                     'google',
                     'google-plus',
+                    'google-plus-official',
                     'google-plus-square',
                     'google-wallet',
                     'gratipay',
@@ -809,12 +748,12 @@ function InputfieldFontIconPickerIcons() {
                     'paypal',
                     'pied-piper',
                     'pied-piper-alt',
+                    'pied-piper-pp',
                     'pinterest',
                     'pinterest-p',
                     'pinterest-square',
                     'product-hunt',
                     'qq',
-                    // 'ra', // (alias)
                     'rebel',
                     'reddit',
                     'reddit-alien',
@@ -831,6 +770,9 @@ function InputfieldFontIconPickerIcons() {
                     'skype',
                     'slack',
                     'slideshare',
+                    'snapchat',
+                    'snapchat-ghost',
+                    'snapchat-square',
                     'soundcloud',
                     'spotify',
                     'stack-exchange',
@@ -840,6 +782,7 @@ function InputfieldFontIconPickerIcons() {
                     'stumbleupon',
                     'stumbleupon-circle',
                     'tencent-weibo',
+                    'themeisle',
                     'trello',
                     'tripadvisor',
                     'tumblr',
@@ -849,25 +792,26 @@ function InputfieldFontIconPickerIcons() {
                     'twitter-square',
                     'usb',
                     'viacoin',
+                    'viadeo',
+                    'viadeo-square',
                     'vimeo',
                     'vimeo-square',
                     'vine',
                     'vk',
-                    // 'wechat', // (alias)
                     'weibo',
                     'weixin',
                     'whatsapp',
                     'wikipedia-w',
                     'windows',
                     'wordpress',
+                    'wpbeginner',
+                    'wpforms',
                     'xing',
                     'xing-square',
                     'y-combinator',
-                    // 'y-combinator-square', // (alias)
                     'yahoo',
-                    // 'yc', // (alias)
-                    // 'yc-square', // (alias)
                     'yelp',
+                    'yoast',
                     'youtube',
                     'youtube-play',
                     'youtube-square'
