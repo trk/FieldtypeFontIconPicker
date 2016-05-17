@@ -91,6 +91,10 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Change Logs
 
+**v.0.1.1**
+
+- FontAwesome updated to 4.6.3
+
 **v.0.1.0**
 
 - Added custom css url support
