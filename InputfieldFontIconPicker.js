@@ -1,10 +1,39 @@
 $(document).ready(function() {
-    var InputfieldFontIconPicker = $(".AvbIconPicker"),
-        ContentElement = $('#content');
+    var PwContentElement = $('#content');
 
-    if(InputfieldFontIconPicker.length) {
-        InputfieldFontIconPicker.each(function() {
-            var $this = $(this);
+    AvbFontIconPickerInit();
+
+    // $(document).on('repeateradd', '.InputfieldRepeaterMatrix .InputfieldRepeaterMatrixAddLink', AvbFontIconPickerInsideRepeaterInit);
+    $(document).on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInsideRepeaterInit);
+    // $(document).on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInsideRepeaterInit);
+
+    if(PwContentElement.length) {
+        PwContentElement.css(
+            'z-index', 2
+        );
+    }
+});
+
+function AvbFontIconPickerInsideRepeaterInit() {
+    var $item = $(this);
+    var $loaded = $item.find(".InputfieldRepeaterLoaded");
+    if(parseInt($loaded.val()) > 0) {
+        AvbFontIconPickerInit();
+    } else {
+        setTimeout(function() {
+            AvbFontIconPickerInit();
+        }, 1000);
+    }
+}
+
+function AvbFontIconPickerInit() {
+
+    var AvbFontIconPicker = $(".AvbIconPicker"),
+        AvbFontIconPickerLoadedClass = 'AvbIconPickerLoaded';
+
+    AvbFontIconPicker.each(function() {
+        var $this = $(this);
+        if(!$this.hasClass(AvbFontIconPickerLoadedClass)) {
             $this.fontIconPicker({
                 theme: $this.attr('theme'),
                 emptyIcon: $this.attr('empty-icon'),
@@ -17,11 +46,7 @@ $(document).ready(function() {
                     'z-index', 2
                 );
             }
-        });
-    }
-    if(ContentElement.length) {
-        ContentElement.css(
-            'z-index', 2
-        );
-    }
-});
+            $this.addClass(AvbFontIconPickerLoadedClass);
+        }
+    });
+}

@@ -94,6 +94,7 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 **v.0.1.1**
 
 - FontAwesome updated to 4.6.3
+- Some works about icon picker inside repeater via ajax load
 
 **v.0.1.0**
 

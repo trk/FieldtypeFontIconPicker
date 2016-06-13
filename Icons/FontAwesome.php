@@ -2,7 +2,7 @@
 function InputfieldFontIconPickerIcons() {
     $icons = array(
         'title' => 'FontAwesome',
-        'version' => '4.5.0',
+        'version' => '4.6.3',
         'css' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
         'categorised' => true,
         'prefix' => 'fa fa-',

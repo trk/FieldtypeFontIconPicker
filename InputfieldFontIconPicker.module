@@ -59,6 +59,8 @@ class InputfieldFontIconPicker extends Inputfield {
 		$this->setAttribute('icons-per-page', $this->attributes['icons-per-page']);
 		$this->setAttribute('has-search', $this->attributes['has-search']);
 		$this->setAttribute('class', $this->selectorClass);
+
+
 	}
 
 	/**
@@ -81,14 +83,13 @@ class InputfieldFontIconPicker extends Inputfield {
 		 * fip-bootstrap : A nice icon picker theme
 		 * fip-inverted : Inverted color scheme
 		 */
-		$this->config->styles->add($this->libraryUrl . "themes/grey-theme/jquery.fonticonpicker.grey.min.css?v=" . $version);
-		$this->config->styles->add($this->libraryUrl . "themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v=" . $version);
-		$this->config->styles->add($this->libraryUrl . "themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v=" . $version);
-		$this->config->styles->add($this->libraryUrl . "themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v=" . $version);
+		if($this->theme == 'fip-grey') $this->config->styles->add($this->libraryUrl . "themes/grey-theme/jquery.fonticonpicker.grey.min.css?v=" . $version);
+		if($this->theme == 'fip-darkgrey') $this->config->styles->add($this->libraryUrl . "themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v=" . $version);
+		if($this->theme == 'fip-bootstrap') $this->config->styles->add($this->libraryUrl . "themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v=" . $version);
+		if($this->theme == 'fip-inverted') $this->config->styles->add($this->libraryUrl . "themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v=" . $version);
 
 		// Load Main Js File
 		$this->config->scripts->add($this->libraryUrl . "jquery.fonticonpicker.js?v=" . $version);
-
 	}
 
 	/**
@@ -134,7 +135,7 @@ class InputfieldFontIconPicker extends Inputfield {
 	}
 
 	/**
-	 * Rende InputfieldFontIconPicker
+	 * Render InputfieldFontIconPicker
 	 *
 	 * @return string
 	 */
