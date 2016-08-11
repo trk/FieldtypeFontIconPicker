@@ -1,6 +1,6 @@
 # FieldtypeFontIconPicker
 
-> Module allow you to use Fotn-Awesome (4.5.0) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
+> Module allow you to use Font-Awesome (4.6.3) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
 
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
