@@ -1,6 +1,6 @@
 # FieldtypeFontIconPicker
 
-> Module allow you to use Font-Awesome (4.6.3) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
+> Module allow you to use Fotn-Awesome (4.7.0) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
 
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
@@ -66,7 +66,7 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Module Using
 
-* [Font-Awesome v4.5.0](http://fontawesome.io)
+* [Font-Awesome v4.7.0](http://fontawesome.io)
 * [jQuery fontIconPicker v2.0.0](http://codeb.it/fonticonpicker)
 
 ### Screenshots - InputfieldFontIconPicker input settings
@@ -90,6 +90,10 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 ![InputfieldFontIconPicker](http://i61.tinypic.com/66zuyw.jpg)
 
 ### Change Logs
+
+**v.0.1.3**
+
+- FontAwesome updated to 4.7.0
 
 **v.0.1.2**
 
