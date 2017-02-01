@@ -3,9 +3,10 @@ $(document).ready(function() {
 
     AvbFontIconPickerInit();
 
-    // $(document).on('repeateradd', '.InputfieldRepeaterMatrix .InputfieldRepeaterMatrixAddLink', AvbFontIconPickerInsideRepeaterInit);
-    $(document).on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInsideRepeaterInit);
-    // $(document).on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInsideRepeaterInit);
+    $(document)
+        // .on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
+        .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
+        .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
 
     if(PwContentElement.length) {
         PwContentElement.css(
@@ -14,20 +15,7 @@ $(document).ready(function() {
     }
 });
 
-function AvbFontIconPickerInsideRepeaterInit() {
-    var $item = $(this);
-    var $loaded = $item.find(".InputfieldRepeaterLoaded");
-    if(parseInt($loaded.val()) > 0) {
-        AvbFontIconPickerInit();
-    } else {
-        setTimeout(function() {
-            AvbFontIconPickerInit();
-        }, 1000);
-    }
-}
-
 function AvbFontIconPickerInit() {
-
     var AvbFontIconPicker = $(".AvbIconPicker"),
         AvbFontIconPickerLoadedClass = 'AvbIconPickerLoaded';
 
