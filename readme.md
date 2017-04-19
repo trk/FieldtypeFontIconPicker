@@ -91,6 +91,10 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Change Logs
 
+**v.0.1.6**
+
+- Fix FieldtypeFontIconPicker sanitizeValue()
+
 **v.0.1.5**
 
 - Added uikit icon select support (required AdminThemeUikit), because uikit icons not working standalone. 
