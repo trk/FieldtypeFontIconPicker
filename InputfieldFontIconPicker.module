@@ -22,7 +22,12 @@ class InputfieldFontIconPicker extends Inputfield {
 		'empty-icon' => 1,
 		'empty-icon-value' => '',
 		'icons-per-page' => 20,
-		'has-search' => 1
+		'has-search' => 1,
+        'use-attribute' => false,
+        'attribute-name' => 'data-icon',
+        'convert-to-hex' => false,
+        'all-category-text' => 'From all categories',
+        'un-categorized-text' => 'Uncategorized'
 	);
 
 	protected $icons = array(
@@ -36,7 +41,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 14,
+			'version' => 15,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -58,8 +63,12 @@ class InputfieldFontIconPicker extends Inputfield {
 		$this->setAttribute('empty-icon-value', $this->attributes['empty-icon-value']);
 		$this->setAttribute('icons-per-page', $this->attributes['icons-per-page']);
 		$this->setAttribute('has-search', $this->attributes['has-search']);
+        $this->setAttribute('use-attribute', $this->attributes['use-attribute']);
+        $this->setAttribute('attribute-name', $this->attributes['attribute-name']);
+        $this->setAttribute('convert-to-hex', $this->attributes['convert-to-hex']);
+        $this->setAttribute('all-category-text', $this->_('From all categories', __FILE__));
+        $this->setAttribute('un-categorized-text', $this->_('Uncategorized', __FILE__));
 		$this->setAttribute('class', $this->selectorClass);
-
 
 	}
 
@@ -116,18 +125,19 @@ class InputfieldFontIconPicker extends Inputfield {
 		// Load Default Icons
 		$this->fontLibrary = ($this->attr('font_library') == "") ? 'FontAwesome' : $this->attr('font_library');
 		if(
-			($this->fontLibrary == 'Ionicons' || $this->fontLibrary == 'FontAwesome') &&
+			($this->fontLibrary == 'Ionicons' || $this->fontLibrary == 'FontAwesome' || $this->fontLibrary == 'Uikit') &&
 			file_exists($this->iconsPath . $this->fontLibrary . ".php"))
 		{
-			if(!function_exists('InputfieldFontIconPickerIcons')) {
+			if(!function_exists('InputfieldFontIconPicker' . $this->fontLibrary)) {
 				wireIncludeFile($this->iconsPath . $this->fontLibrary);
 			}
 
 			return array(
+			    'font_library' => $this->fontLibrary,
 				// Set & Set Attributes
 				'attributes' => $this->getAttributes(),
 				// Get & Set Default Font Library
-				'icons' => InputfieldFontIconPickerIcons()
+				'icons' => call_user_func('InputfieldFontIconPicker' . $this->fontLibrary)
 			);
 		} else {
 			throw new WireException("Could not find icons path {$this->iconsPath}{$this->fontLibrary}.php");
@@ -142,7 +152,6 @@ class InputfieldFontIconPicker extends Inputfield {
 	public function ___render() {
 		// Get ALL Options
 		$options = $this->beforeRender();
-
 		// If we have a css option, add it to load ProcessWire styles load list
 		if($this->custom_css_url != "") {
 			$this->config->styles->add($this->custom_css_url);
@@ -156,12 +165,6 @@ class InputfieldFontIconPicker extends Inputfield {
 		// Set merged attributes
 		$this->setAttributes($attributes);
 
-		// Set Prefix
-		$this->setAttribute('prefix', $options['icons']['prefix']);
-
-		// Set Prefixed Value
-		if($this->attr('value')) $this->setAttribute('value', $this->attr('prefix') . $this->attr('value'));
-
 		// Set check theme is empty?
 		if($this->attr('theme') == '') $this->setAttribute('theme', 'fip-grey');
 
@@ -172,14 +175,47 @@ class InputfieldFontIconPicker extends Inputfield {
 		if($this->attr('has-search') === 1) $this->setAttribute('has-search', 'true');
 		else  $this->setAttribute('has-search', 'false');
 
+        // Set true | false for use-attribute
+        if($this->attr('use-attribute') === 1) $this->setAttribute('use-attribute', 'true');
+        else  $this->setAttribute('use-attribute', 'false');
+
+        // Set data-icon | given value for attribute-name
+        if($this->attr('attribute-name') === 1) $this->setAttribute('attribute-name', 'true');
+        else  $this->setAttribute('attribute-name', 'data-icon');
+
+        // Set data-icon | given value for attribute-name
+        if($this->attr('convert-to-hex') === 1) $this->setAttribute('convert-to-hex', 'true');
+        else  $this->setAttribute('convert-to-hex', 'false');
+
 		// Set true | false for empty icon
 		if($this->attr('empty-icon') === 1) $this->setAttribute('empty-icon', 'true');
 		else  $this->setAttribute('empty-icon', 'false');
 
+        // Translations
+        $this->setAttribute('all-category-text', $this->_('From all categories', __FILE__));
+        $this->setAttribute('un-categorized-text', $this->_('Uncategorized', __FILE__));
+
+        // Overwrite attributes by given Icons file
+        if(array_key_exists('attributes', $options['icons'])) {
+            foreach ($options['icons']['attributes'] as $attrKey => $attrValue) {
+                if(is_bool($attrValue)) {
+                    $attrValueReplace = $attrValue === true ? 'true' : 'false';
+                } else {
+                    $attrValueReplace = $attrValue;
+                }
+                $this->setAttribute($attrKey, $attrValueReplace);
+            }
+        }
+
+        // If we don't have prefix attribute create empty prefix attribute
+        if(!$this->getAttribute('prefix')) $this->setAttribute('prefix', '');
+
+        // Set Prefixed Value
+        if($this->attr('value')) $this->setAttribute('value', $this->attr('prefix') . $this->attr('value'));
+
 		// Icons are categorised ? Check is category selected ?
-		$categorised = FALSE;
-		if($options['icons']['categorised'] === TRUE) {
-			$categorised = TRUE;
+		$categorised = array_key_exists('categorised', $options['icons']) && $options['icons']['categorised'] === true ? true : false;
+		if($categorised === true) {
 			if(array_key_exists($this->attr('category'), $options['icons']['icons'])) {
 				$icons[] = $options['icons']['icons'][$this->attr('category')];
 			} else {
@@ -193,12 +229,12 @@ class InputfieldFontIconPicker extends Inputfield {
 		$output = "\n<select " . $this->getAttributesString($this->getAttributes()) . ">
 					\n\t<option value=''>" . $this->_('No Icon') . "</option>";
 		// Build categorised icon list
-		if($categorised === TRUE) {
+		if($categorised === true) {
 			foreach($icons as $key => $icon) {
-				$categoryTitle = FALSE;
+				$categoryTitle = false;
 				if(isset($icon['title'])) {
 					$output .= "\n\t<optgroup label='{$icon['title']}'>";
-					$categoryTitle = TRUE;
+					$categoryTitle = true;
 				}
 				if(isset($icon['icons']) && !empty($icon['icons'])) {
 					foreach($icon['icons'] as $ke => $ic) {
@@ -226,7 +262,18 @@ class InputfieldFontIconPicker extends Inputfield {
 		$inputfields = parent::___getConfigInputfields();
 		$options = $this->beforeRender();
 		$icons = $options['icons'];
-		$categorisedStr = ($icons['categorised'] === TRUE) ? 'YES' : 'NO';
+
+		$textTrue = "**" . __('true') . "**";
+        $textFalse = "**" . __('false') . "**";
+        $textEmpty = "**" . __('- empty -') . "**";
+
+		$iconsTitle = array_key_exists('title', $icons) && $icons['title'] != '' ? $icons['title'] : $textEmpty;
+        $iconsVersion = array_key_exists('version', $icons) && $icons['version'] != '' ? $icons['version'] : $textEmpty;
+        $iconsPrefix = array_key_exists('attributes', $icons) && array_key_exists('prefix', $icons['attributes']) && $icons['attributes']['prefix'] != '' ? $icons['attributes']['prefix'] : $textEmpty;
+        $iconsCss = array_key_exists('css', $icons) && $icons['css'] != '' ? $icons['css'] : $textEmpty;
+        $categorised = array_key_exists('categorised', $icons) && $icons['categorised'] === TRUE ? $textTrue : $textFalse;
+        $useAttribute = array_key_exists('attributes', $icons) && array_key_exists('use-attribute', $icons['attributes']) && $icons['attributes']['use-attribute'] === TRUE ? $textTrue : $textFalse;
+        $attributeName = array_key_exists('attributes', $icons) && array_key_exists('attribute-name', $icons['attributes']) ? $icons['attributes']['attribute-name'] : $textEmpty;
 
 		/**
 		 * Icon Library
@@ -237,7 +284,18 @@ class InputfieldFontIconPicker extends Inputfield {
 		$field->description = __('Select an font icon library.');
 		$field->addOption('FontAwesome', 'Font Awesome', ($this->attr('font_library') == 'FontAwesome') ?  array('selected' => 'selected') : array());
 		$field->addOption('Ionicons', 'Ionicons', ($this->attr('font_library') == 'Ionicons') ?  array('selected' => 'selected') : array());
-		$field->notes = "\nLibary: {$icons['title']}\nVersion: {$icons['version']}\nPrefix: {$icons['prefix']}\nCategorised: {$categorisedStr}\nCSS: {$icons['css']}";
+        $field->addOption('Uikit', 'Uikit', ($this->attr('font_library') == 'Uikit') ?  array('selected' => 'selected') : array());
+        $field->notes = "\n**" . __('Library configs', __FILE__) . "** .
+                         \n- **" . __('Library', __FILE__) . " : **{$iconsTitle}
+                         \n- **" . __('Version', __FILE__) . " : **{$iconsVersion}
+                         \n- **" . __('Prefix', __FILE__) . " : **{$iconsPrefix}
+                         \n- **" . __('CSS File', __FILE__) . " : **{$iconsCss}
+                         \n- **" . __('Categorised', __FILE__) . " : **{$categorised}
+                         \n- **" . __('Use Attribute', __FILE__) . " : **{$useAttribute}
+                         \n- **" . __('Attribute Name', __FILE__) . " : **{$attributeName}
+                         ";
+        $inputfields->required = 1;
+        $inputfields->default = 'FontAwesome';
 		$inputfields->append($field);
 
 		/**

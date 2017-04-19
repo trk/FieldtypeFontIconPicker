@@ -637,7 +637,7 @@
 
 				// Set the icon box
 				$('<span/>', {
-					html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>',
+					html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute == 'true' ? (this.settings.attributeName + '="' + ( this.settings.convertToHex == 'true' ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>',
 					'class':   'fip-box',
 					title: flipBoxTitle
 				}).appendTo(this.iconContainer);
@@ -683,9 +683,9 @@
 			}
 
 			// Check if attribute is to be used
-			if ( this.settings.useAttribute ) {
+			if ( this.settings.useAttribute == 'true' ) {
 				if ( theIcon ) {
-					this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>' );
+					this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex == 'true' ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>' );
 				} else {
 					this.iconPicker.find('.selected-icon').html('<i class="fip-icon-block"></i>');
 				}

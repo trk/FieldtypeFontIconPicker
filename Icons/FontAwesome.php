@@ -1,11 +1,13 @@
 <?php
-function InputfieldFontIconPickerIcons() {
+function InputfieldFontIconPickerFontAwesome() {
     $icons = array(
         'title' => 'FontAwesome',
         'version' => '4.7',
         'css' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
         'categorised' => true,
-        'prefix' => 'fa fa-',
+        'attributes' => array(
+            'prefix' => 'fa fa-'
+        ),
         'icons' => array(
             'web-application-icons' => array(
                 'title' => __('Web Application Icons'),

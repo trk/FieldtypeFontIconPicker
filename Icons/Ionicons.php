@@ -1,11 +1,13 @@
 <?php
-function InputfieldFontIconPickerIcons() {
+function InputfieldFontIconPickerIonicons() {
     $icons = array(
         'title' => 'Ionicons',
         'version' => '2.0.1',
         'css' => 'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
         'categorised' => false,
-        'prefix' => 'ion-',
+        'attributes' => array(
+            'prefix' => 'ion-'
+        ),
         'icons' => array(
             'alert',
             'alert-circled',

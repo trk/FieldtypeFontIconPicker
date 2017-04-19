@@ -13,7 +13,7 @@ class FieldtypeFontIconPicker extends Fieldtype {
 		return array(
 			'title' => 'FieldtypeFontIconPicker',
 			'summary' => __('Allow you to use icon picker input field.'),
-			'version' => 14,
+			'version' => 15,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'icon' => 'flag-o',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
@@ -42,7 +42,9 @@ class FieldtypeFontIconPicker extends Fieldtype {
 	 */
 	public function sanitizeValue(Page $page, Field $field, $value) {
 		$options = $this->modules->get('InputfieldFontIconPicker')->beforeRender();
-		$value = str_replace($options['icons']['prefix'], '', $value);
+		if(array_key_exists('attributes', $options['icons']) && array_key_exists('prefix', $options['icons']['attributes'])) {
+            $value = str_replace($options['icons']['attributes']['prefix'], '', $value);
+        }
 		return $value;
 	}
 

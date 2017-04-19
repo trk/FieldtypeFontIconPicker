@@ -27,7 +27,12 @@ function AvbFontIconPickerInit() {
                 emptyIcon: $this.attr('empty-icon'),
                 emptyIconValue: $this.attr('empty-icon-value'),
                 iconsPerPage: $this.attr('icons-per-page'),
-                hasSearch: $this.attr('has-search')
+                hasSearch: $this.attr('has-search'),
+                useAttribute : $this.attr('use-attribute'),
+                attributeName : $this.attr('attribute-name'),
+                convertToHex : $this.attr('convert-to-hex'),
+                allCategoryText : $this.attr('all-category-text'),
+                unCategorizedText : $this.attr('un-categorized-text')
             });
             if($this.parents('.InputfieldContent').length) {
                 $this.parents('.InputfieldContent').css(
