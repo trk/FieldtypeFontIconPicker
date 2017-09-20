@@ -91,6 +91,10 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Change Logs
 
+**v.0.1.7**
+
+- Ionicons css file link updated
+
 **v.0.1.6**
 
 - Fix FieldtypeFontIconPicker sanitizeValue()
