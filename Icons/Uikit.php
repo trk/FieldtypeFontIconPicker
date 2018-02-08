@@ -2,7 +2,7 @@
 function InputfieldFontIconPickerUikit() {
     $icons = array(
         'title' => 'Uikit',
-        'version' => '3.0.21',
+        'version' => '3.0.34',
         'css' => '',
         'categorised' => true,
         'attributes' => array(
@@ -146,6 +146,7 @@ function InputfieldFontIconPickerUikit() {
             'brand-icons' => array(
                 'title' => __("Brand Icons"),
                 'icons' => array(
+                    "500px",
                     "behance",
                     "dribbble",
                     "facebook",

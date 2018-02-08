@@ -41,7 +41,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 17,
+			'version' => 19,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -129,7 +129,7 @@ class InputfieldFontIconPicker extends Inputfield {
 			file_exists($this->iconsPath . $this->fontLibrary . ".php"))
 		{
 			if(!function_exists('InputfieldFontIconPicker' . $this->fontLibrary)) {
-				wireIncludeFile($this->iconsPath . $this->fontLibrary);
+                wire('files')->include($this->iconsPath . $this->fontLibrary);
 			}
 
 			return array(
