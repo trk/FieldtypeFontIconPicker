@@ -7,13 +7,6 @@ $(document).ready(function() {
         // .on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
         .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
         .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
-
-    var iconsSelector = $(".icons-selector");
-    if(iconsSelector.length) {
-        iconsSelector.each(function() {
-            $(this).css("position", "");
-        });
-    }
     if(PwContentElement.length) {
         PwContentElement.css(
             'z-index', 2
@@ -40,6 +33,10 @@ function AvbFontIconPickerInit() {
                 allCategoryText : $this.attr('all-category-text'),
                 unCategorizedText : $this.attr('un-categorized-text')
             });
+            
+            // Remove position: relative style from icons-selector class
+            $this.parent().children(".icons-selector").css("position", "");
+
             if($this.parents('.InputfieldContent').length) {
                 $this.parents('.InputfieldContent').css(
                     'z-index', 2
