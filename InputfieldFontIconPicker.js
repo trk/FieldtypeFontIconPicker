@@ -8,6 +8,12 @@ $(document).ready(function() {
         .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
         .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
 
+    var iconsSelector = $(".icons-selector");
+    if(iconsSelector.length) {
+        iconsSelector.each(function() {
+            $(this).css("position", "");
+        });
+    }
     if(PwContentElement.length) {
         PwContentElement.css(
             'z-index', 2
