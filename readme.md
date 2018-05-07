@@ -7,7 +7,7 @@
 - [Uikit 3.0.0](https://getuikit.com/docs/icon#library)
 - [IonicIcons 2.0.1](http://ionicons.com/)
 
-### [Cahangelog](https://github.com/fontIconPicker/fontIconPicker/CHANGELOG.md)
+### [Cahangelog](https://github.com/trk/FieldtypeFontIconPicker/blob/master/CHANGELOG.md)
 
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
