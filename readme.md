@@ -71,11 +71,6 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
     ]);
 ```
 
-### Module Using
-
-* [Font-Awesome v4.7.0](http://fontawesome.io)
-* [jQuery fontIconPicker v2.0.0](http://codeb.it/fonticonpicker)
-
 ### Screenshots - InputfieldFontIconPicker input settings
 
 > InputfieldFontIconPicker Setting "Category Select"
