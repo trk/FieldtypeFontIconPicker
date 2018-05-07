@@ -1,6 +1,13 @@
 # FieldtypeFontIconPicker
 
-> Module allow you to use Fotn-Awesome (4.7.0) icons easily. You can select icons directly from icon select list, also you can set settings for each InputfieldFontIconPicker.
+> This field-type allow to you easily pick icons from input-field. This module using [jQuery fontIconPicker](https://github.com/fontIconPicker/fontIconPicker) as icon selector. You can see supported icon libraries below. If you need to use custom fonts you can check below example. 
+
+### Supported Icon Libraries
+- [FontAwesome 4.7.0](https://fontawesome.com/v4.7.0/icons/)
+- [Uikit 3.0.0](https://getuikit.com/docs/icon#library)
+- [IonicIcons 2.0.1](http://ionicons.com/)
+
+### [Cahangelog](https://github.com/fontIconPicker/fontIconPicker/CHANGELOG.md)
 
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
@@ -88,84 +95,3 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 > InputfieldFontIconPicker Categories
 
 ![InputfieldFontIconPicker](http://i61.tinypic.com/66zuyw.jpg)
-
-### Change Logs
-
-**v.1.0.0**
-
-- Update jQuery fontIconPicker v3.1.1
-- Add FontAwesome 5 icons for next version
-- Update modgule javascript files
-
-**v.0.1.7**
-
-- Ionicons css file link updated
-
-**v.0.1.6**
-
-- Fix FieldtypeFontIconPicker sanitizeValue()
-
-**v.0.1.5**
-
-- Added uikit icon select support (required AdminThemeUikit), because uikit icons not working standalone. 
-
-**v.0.1.4**
-
-- Fix issue FontIconPicker inside repeater item
-
-**v.0.1.3**
-
-- FontAwesome updated to 4.7.0
-
-**v.0.1.2**
-
-- Little Corrections
-- Some works about icon picker inside repeater via ajax load
-
-**v.0.1.1**
-
-- FontAwesome updated to 4.6.3
-
-**v.0.1.0**
-
-- Added custom css url support
-
-**v.0.0.9**
-
-- Added hook method ___beforeRender(), you can check hook example for usage
-- Added multiple icons library use option
-- Added Ionicons Library
-- Now module using cdn for load icon fonts
-
-**v.0.0.8**
-
-- FontAwesome 4.5 update, Improvements and Performance updates
-- **Important !** **After update module check your input settings, because i changed input attribute names (This will only effect input options, like theme, category).** Changed loading icon method from input:hidden to select>optgroup>option, added module js file for load and correct icon picker container many changes….
-
-**v.0.0.7**
-
-- FontAwesome updated to 4.4.0
-
-**v.0.0.6**
-
-- Missed... array compatibility for usage, from [$foo, $bar] to array($foo, $bar)
-
-**v.0.0.5**
-
-- Fix for oldest pw versions (Assets file loding scripts moved to inputfieldfonticonpicker module)
-
-**v.0.0.4**
-
-- Array compatibility for usage, from [$foo, $bar] to array($foo, $bar)
-
-**v.0.0.3**
-
-- Small z-index problem solved
-
-**v.0.0.2**
-
-- MarkupFontIconPicker added
-
-**v.0.0.1**
-
-- Start Point
