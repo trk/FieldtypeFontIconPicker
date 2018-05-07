@@ -11,7 +11,8 @@ class InputfieldFontIconPicker extends Inputfield {
 	protected $selectorClass = 'AvbIconPicker';
 	protected $fontLibrary;
 	protected $iconsPath;
-	protected $libraryUrl;
+
+	protected $module_url;
 	protected $prefix;
 
 	protected $attributes = array(
@@ -41,7 +42,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		return array(
 			'title' => 'InputfieldFontIconPicker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 21,
+			'version' => 100,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'flag',
@@ -54,7 +55,7 @@ class InputfieldFontIconPicker extends Inputfield {
 	public function __construct() {
 		parent::__construct();
 		$this->iconsPath = $this->config->paths->FieldtypeFontIconPicker . 'Icons/';
-		$this->libraryUrl = $this->config->urls->FieldtypeFontIconPicker . 'Libraries/fontIconPicker-2.0.0/';
+		$this->module_url = $this->config->urls->FieldtypeFontIconPicker;
 
 		$this->setAttribute('font_library', $this->attributes['font_library']);
 		$this->setAttribute('category', $this->attributes['category']);
@@ -82,7 +83,7 @@ class InputfieldFontIconPicker extends Inputfield {
 		$version = (int) $conf['version'];
 
 		// Load Main Css File
-		$this->config->styles->add($this->libraryUrl . "css/jquery.fonticonpicker.css?v=" . $version);
+		$this->config->styles->add($this->module_url . "dist/css/base/jquery.fonticonpicker.min.css?v=" . $version);
 
 		/**
 		 * Load Themes if Needed
@@ -92,13 +93,13 @@ class InputfieldFontIconPicker extends Inputfield {
 		 * fip-bootstrap : A nice icon picker theme
 		 * fip-inverted : Inverted color scheme
 		 */
-		if($this->theme == 'fip-grey') $this->config->styles->add($this->libraryUrl . "themes/grey-theme/jquery.fonticonpicker.grey.min.css?v=" . $version);
-		if($this->theme == 'fip-darkgrey') $this->config->styles->add($this->libraryUrl . "themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v=" . $version);
-		if($this->theme == 'fip-bootstrap') $this->config->styles->add($this->libraryUrl . "themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v=" . $version);
-		if($this->theme == 'fip-inverted') $this->config->styles->add($this->libraryUrl . "themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v=" . $version);
+		if($this->theme == 'fip-grey') $this->config->styles->add($this->module_url . "dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css?v=" . $version);
+		if($this->theme == 'fip-darkgrey') $this->config->styles->add($this->module_url . "dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v=" . $version);
+		if($this->theme == 'fip-bootstrap') $this->config->styles->add($this->module_url . "dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v=" . $version);
+		if($this->theme == 'fip-inverted') $this->config->styles->add($this->module_url . "dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v=" . $version);
 
 		// Load Main Js File
-		$this->config->scripts->add($this->libraryUrl . "jquery.fonticonpicker.js?v=" . $version);
+		$this->config->scripts->add($this->module_url . "dist/js/jquery.fonticonpicker.min.js?v=" . $version);
 	}
 
 	/**

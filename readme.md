@@ -91,6 +91,12 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Change Logs
 
+**v.1.0.0**
+
+- Update jQuery fontIconPicker v3.1.1
+- Add FontAwesome 5 icons for next version
+- Update modgule javascript files
+
 **v.0.1.7**
 
 - Ionicons css file link updated

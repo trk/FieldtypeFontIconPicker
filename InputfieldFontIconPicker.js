@@ -21,18 +21,27 @@ function AvbFontIconPickerInit() {
     AvbFontIconPicker.each(function() {
         var $this = $(this);
         if(!$this.hasClass(AvbFontIconPickerLoadedClass)) {
-            $this.fontIconPicker({
+            var useAttribute = $this.attr('use-attribute'),
+                attributeName = $this.attr('attribute-name');
+
+            var options = {
                 theme: $this.attr('theme'),
                 emptyIcon: $this.attr('empty-icon'),
                 emptyIconValue: $this.attr('empty-icon-value'),
                 iconsPerPage: $this.attr('icons-per-page'),
                 hasSearch: $this.attr('has-search'),
-                useAttribute : $this.attr('use-attribute'),
-                attributeName : $this.attr('attribute-name'),
                 convertToHex : $this.attr('convert-to-hex'),
                 allCategoryText : $this.attr('all-category-text'),
                 unCategorizedText : $this.attr('un-categorized-text')
-            });
+            };
+
+            if(useAttribute && useAttribute !== "false" && attributeName) {
+                options.iconGenerator = function( icon ) {
+                    return '<span ' + attributeName + '="' + icon + '"></span>';
+                };
+            }
+
+            $this.fontIconPicker(options);
             
             // Remove position: relative style from icons-selector class
             $this.parent().children(".icons-selector").css("position", "");
