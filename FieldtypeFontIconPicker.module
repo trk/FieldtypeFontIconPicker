@@ -11,11 +11,11 @@ class FieldtypeFontIconPicker extends Fieldtype {
 
 	public static function getModuleInfo() {
 		return array(
-			'title' => 'FieldtypeFontIconPicker',
+			'title' => 'Icon Picker',
 			'summary' => __('Allow you to use icon picker input field.'),
 			'version' => 100,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
-			'icon' => 'flag-o',
+			'icon' => 'hand-pointer-o',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'installs' => array(
 				'InputfieldFontIconPicker',

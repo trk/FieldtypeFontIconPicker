@@ -40,12 +40,12 @@ class InputfieldFontIconPicker extends Inputfield {
 
 	public static function getModuleInfo() {
 		return array(
-			'title' => 'InputfieldFontIconPicker',
+			'title' => 'Icon Picker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
 			'version' => 100,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
-			'icon' => 'flag',
+			'icon' => 'hand-pointer-o',
 			'requires' => array(
 				'FieldtypeFontIconPicker',
             )
