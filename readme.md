@@ -73,20 +73,24 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 ### Screenshots - InputfieldFontIconPicker input settings
 
+> InputfieldFontIconPicker Setting "Icon library select"
+
+![InputfieldFontIconPicker Field Settings Category Select](screenshots/library-select.png)
+
 > InputfieldFontIconPicker Setting "Category Select"
 
-![InputfieldFontIconPicker Field Settings Category Select](http://i59.tinypic.com/65mw6e.jpg)
+![InputfieldFontIconPicker Field Settings Category Select](screenshots/category-select.png)
 
 > InputfieldFontIconPicker Setting "Theme Select"
 
-![InputfieldFontIconPicker Field Settings Theme Select](http://i60.tinypic.com/2nksx94.jpg)
+![InputfieldFontIconPicker Field Settings Theme Select](screenshots/theme-select.png)
 
 ### Screenshots - InputfieldFontIconPicker page edit views
 
 > InputfieldFontIconPicker Search
 
-![InputfieldFontIconPicker](http://i59.tinypic.com/1zdpsnk.jpg)
+![InputfieldFontIconPicker](screenshots/search.png)
 
 > InputfieldFontIconPicker Categories
 
-![InputfieldFontIconPicker](http://i61.tinypic.com/66zuyw.jpg)
+![InputfieldFontIconPicker](screenshots/categories.png)
