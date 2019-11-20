@@ -75,22 +75,22 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 
 > InputfieldFontIconPicker Setting "Icon library select"
 
-![InputfieldFontIconPicker Field Settings Category Select](screenshots/library-select.png)
+![InputfieldFontIconPicker Field Settings Category Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/library-select.png)
 
 > InputfieldFontIconPicker Setting "Category Select"
 
-![InputfieldFontIconPicker Field Settings Category Select](screenshots/category-select.png)
+![InputfieldFontIconPicker Field Settings Category Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/category-select.png)
 
 > InputfieldFontIconPicker Setting "Theme Select"
 
-![InputfieldFontIconPicker Field Settings Theme Select](screenshots/theme-select.png)
+![InputfieldFontIconPicker Field Settings Theme Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/theme-select.png)
 
 ### Screenshots - InputfieldFontIconPicker page edit views
 
 > InputfieldFontIconPicker Search
 
-![InputfieldFontIconPicker](screenshots/search.png)
+![InputfieldFontIconPicker](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/search.png)
 
 > InputfieldFontIconPicker Categories
 
-![InputfieldFontIconPicker](screenshots/categories.png)
+![InputfieldFontIconPicker](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/categories.png)
