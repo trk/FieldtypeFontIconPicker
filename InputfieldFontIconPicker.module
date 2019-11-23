@@ -1,4 +1,4 @@
-<?php
+üc<?php
 
 /**
  * Class InputfieldFontIconPicker
@@ -6,43 +6,85 @@
  * @author			: İskender TOTOĞLU, @ukyo (community), @trk (Github)
  * @website			: http://altivebir.com.tr
  * @projectWebsite	: https://github.com/trk/FieldtypeFontIconPicker
+ * 
+ * @property string $iconLibrary
+ * @property string $iconPickerTheme
+ * @property integer $iconPickerIconsPerPage
+ * @property boolean $iconPickerHasSearch
+ * @property boolean $allowEmptyIcon
+ * @property string $emptyIconValue
  */
-class InputfieldFontIconPicker extends Inputfield {
-	protected $selectorClass = 'AvbIconPicker';
-	protected $fontLibrary;
-	protected $iconsPath;
+class InputfieldFontIconPicker extends Inputfield
+{
 
-	protected $module_url;
-	protected $prefix;
+	const SELECTOR_CLASS = "AvbIconPicker";
 
-	protected $attributes = array(
-		'font_library' => 'FontAwesome',
-		'custom_css_url' => '',
-		'category' => '',
-		'theme' => 'fip-grey',
-		'empty-icon' => 1,
-		'empty-icon-value' => '',
-		'icons-per-page' => 20,
-		'has-search' => 1,
-        'use-attribute' => false,
-        'attribute-name' => 'data-icon',
-        'convert-to-hex' => false,
-        'all-category-text' => 'From all categories',
-        'un-categorized-text' => 'Uncategorized'
+	/**
+	 * @var string $moduleURL
+	 */
+	public $moduleURL;
+
+	/**
+	 * @var integer $version
+	 */
+	public $version;
+
+	/**
+	 * @var array $resources
+	 */
+	public $resources = array();
+
+	/**
+	 * @var array $resource
+	 */
+	public $resource = array(
+		"base" => "",
+		"filename" => "",
+		"name" => "",
+		"title" => "",
+		"version" => "",
+		"styles" => array(),
+		"scripts" => array(),
+		"categorized" => false,
+		"attributes" => array(),
+		"categories" => array(),
+		"icons" => array()
 	);
 
-	protected $icons = array(
-		'title' => '',
-		'version' => '',
-		'categorised' => false,
-		'icons' => array()
+	/**
+	 * @var array $variables
+	 */
+	protected $variables = array(
+		"iconLibrary" => "fieldtypefonticonpicker.fontawesome",
+		"iconCategory" => "",
+		"iconPickerTheme" => "fip-grey",
+		"iconPickerIconsPerPage" => 20,
+		"iconPickerHasSearch" => true,
+		"allowEmptyIcon" => true,
+		"emptyIconValue" => ""
 	);
 
-	public static function getModuleInfo() {
+	/**
+	 * @var array $attributes
+	 */
+	public $attributes = array();
+
+	/**
+	 * @var string $prefix
+	 */
+	public $prefix = "";
+
+	/**
+	 * @inheritDoc
+	 * 
+	 * @return array
+	 */
+	public static function getModuleInfo()
+	{
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 100,
+			'version' => 200,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'hand-pointer-o',
@@ -52,348 +94,332 @@ class InputfieldFontIconPicker extends Inputfield {
 		);
 	}
 
-	public function __construct() {
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct()
+	{
 		parent::__construct();
-		$this->iconsPath = $this->config->paths->FieldtypeFontIconPicker . 'Icons/';
-		$this->module_url = $this->config->urls->FieldtypeFontIconPicker;
 
-		$this->setAttribute('font_library', $this->attributes['font_library']);
-		$this->setAttribute('category', $this->attributes['category']);
-		$this->setAttribute('theme', $this->attributes['theme']);
-		$this->setAttribute('empty-icon', $this->attributes['empty-icon']);
-		$this->setAttribute('empty-icon-value', $this->attributes['empty-icon-value']);
-		$this->setAttribute('icons-per-page', $this->attributes['icons-per-page']);
-		$this->setAttribute('has-search', $this->attributes['has-search']);
-        $this->setAttribute('use-attribute', $this->attributes['use-attribute']);
-        $this->setAttribute('attribute-name', $this->attributes['attribute-name']);
-        $this->setAttribute('convert-to-hex', $this->attributes['convert-to-hex']);
-        $this->setAttribute('all-category-text', $this->_('From all categories', __FILE__));
-        $this->setAttribute('un-categorized-text', $this->_('Uncategorized', __FILE__));
-		$this->setAttribute('class', $this->selectorClass);
+		// Module : config
+		$moduleInfo = $this->getModuleInfo();
 
-	}
+		// Module : version
+		$this->version = $moduleInfo["version"];
 
-	/**
-	 * Init
-	 */
-	public function init() {
-		parent::init();
+		// Module : url
+		$this->moduleURL = $this->wire->config->urls->siteModules . "FieldtypeFontIconPicker";
 
-		$conf = $this->getModuleInfo();
-		$version = (int) $conf['version'];
+		// set resources
+		$this->resources = $this->wire->modules->get("FieldtypeFontIconPicker")->resources();
 
-		// Load Main Css File
-		$this->config->styles->add($this->module_url . "dist/css/base/jquery.fonticonpicker.min.css?v=" . $version);
-
-		/**
-		 * Load Themes if Needed
-		 *
-		 * fip-grey : The default theme
-		 * fip-darkgrey : A deeper shade of the grey theme
-		 * fip-bootstrap : A nice icon picker theme
-		 * fip-inverted : Inverted color scheme
-		 */
-		if($this->theme == 'fip-grey') $this->config->styles->add($this->module_url . "dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css?v=" . $version);
-		if($this->theme == 'fip-darkgrey') $this->config->styles->add($this->module_url . "dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v=" . $version);
-		if($this->theme == 'fip-bootstrap') $this->config->styles->add($this->module_url . "dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v=" . $version);
-		if($this->theme == 'fip-inverted') $this->config->styles->add($this->module_url . "dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v=" . $version);
-
-		// Load Main Js File
-		$this->config->scripts->add($this->module_url . "dist/js/jquery.fonticonpicker.min.js?v=" . $version);
-	}
-
-	/**
-	 * Get Attributes
-	 *
-	 * @return array
-	 */
-	public function getAttributes() {
-		$attrs = parent::getAttributes();
-		return $attrs;
-	}
-
-	public function setAttribute($key, $value) {
-		return parent::setAttribute($key, $value);
-	}
-
-	/**
-	 * Hookable method for before render
-	 *
-	 * @return array
-	 * @throws WireException
-	 */
-	public function ___beforeRender() {
-		// Load Default Icons
-		$this->fontLibrary = ($this->attr('font_library') == "") ? 'FontAwesome' : $this->attr('font_library');
-		if(
-			($this->fontLibrary == 'Ionicons' || $this->fontLibrary == 'FontAwesome' || $this->fontLibrary == 'Uikit') &&
-			file_exists($this->iconsPath . $this->fontLibrary . ".php"))
-		{
-			if(!function_exists('InputfieldFontIconPicker' . $this->fontLibrary)) {
-				$files = wire('files');
-				if( $files ) {
-					$files->include($this->iconsPath . $this->fontLibrary);
-				}
-				else {
-					include($this->iconsPath . $this->fontLibrary.'.php');
-				}
-			}
-
-			return array(
-			    'font_library' => $this->fontLibrary,
-				// Set & Set Attributes
-				'attributes' => $this->getAttributes(),
-				// Get & Set Default Font Library
-				'icons' => call_user_func('InputfieldFontIconPicker' . $this->fontLibrary)
-			);
-		} else {
-			throw new WireException("Could not find icons path {$this->iconsPath}{$this->fontLibrary}.php");
+		// set variables
+		foreach ($this->variables as $name => $default) {
+			$this->set($name, $default);
 		}
 	}
 
 	/**
-	 * Render InputfieldFontIconPicker
+	 * @return void
+	 */
+	public function init()
+	{
+		// Icon Picker : core style
+		$this->wire->config->styles->add("{$this->moduleURL}/dist/css/base/jquery.fonticonpicker.min.css?v={$this->version}");
+
+		// Icon Picker : core script
+		$this->wire->config->scripts->add("{$this->moduleURL}/dist/js/jquery.fonticonpicker.min.js?v={$this->version}");
+
+	}
+
+	/**
+	 * @inheritDoc
 	 *
+	 * @param string $iconLibrary
+	 * 
+	 * @return array
+	 */
+	public function resource($iconLibrary = "")
+	{
+		$iconLibrary = $iconLibrary ?: $this->iconLibrary;
+
+		$resource = array();
+
+		if ($iconLibrary && isset($this->resources[$iconLibrary])) {
+			$resource = $this->resources[$iconLibrary];
+			$source = include $resource["file"];
+			$resource["icons"] = isset($source["icons"]) ? $source["icons"] : array();
+		}
+
+		$resource = array_merge($this->resource, $resource);
+
+		$this->prefix = isset($resource["attributes"]["prefix"]) ? $resource["attributes"]["prefix"] : "";
+
+		return $resource;
+	}
+
+	/**
+	 * @inheritDoc
+	 * 
+	 * @param array $resource
+	 * 
+	 * @return array
+	 */
+	function getOptions(array $resource = array())
+	{
+		$resource = $resource ?: $this->resource();
+
+		$icons = isset($resource["icons"]) ? $resource["icons"] : array();
+
+		if (isset($icons[$this->iconCategory]) && isset($icons[$this->iconCategory]["icons"])) {
+			$icons = $icons[$this->iconCategory]["icons"];
+		}
+		
+		$options = array();
+		
+		foreach ($icons as $index => $value) {
+
+			if (is_array($value)) {
+				$title = isset($value["title"]) ? $value["title"] : $index;
+				$options[$title] = array();
+				foreach (isset($value["icons"]) ? $value["icons"] : array() as $i => $val) {
+					$val = $this->prefix . $val;
+					$options[$title][$val] = $val;
+				}
+			} else {
+				$value = $this->prefix . $value;
+				$options[$value] = $value;
+			}
+
+		}
+
+		return $options;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function ready()
+	{
+		// Icon Picker : theme style
+		switch ($this->iconPickerTheme) {
+			case "fip-grey":
+				$this->wire->config->styles->append("{$this->moduleURL}/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css?v={$this->version}");
+			break;
+			case "fip-darkgrey":
+				$this->wire->config->styles->append("{$this->moduleURL}/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css?v={$this->version}");
+			break;
+			case "fip-bootstrap":
+				$this->wire->config->styles->append("{$this->moduleURL}/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css?v={$this->version}");
+			break;
+			case "fip-inverted":
+				$this->wire->config->styles->append("{$this->moduleURL}/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css?v={$this->version}");
+			break;
+		}
+
+		// Resource
+		$resource = $this->resource();
+
+		// Icon Picker : resource styles
+		foreach ($resource["styles"] as $index => $style) {
+			$this->wire->config->styles->append("{$style}?v={$this->version}");
+		}
+
+		// Icon Picker : resource scripts
+		foreach ($resource["scripts"] as $index => $script) {
+			$this->wire->config->scripts->append("{$script}?v={$this->version}");
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 * 
 	 * @return string
 	 */
-	public function ___render() {
-		// Get ALL Options
-		$options = $this->beforeRender();
-		// If we have a css option, add it to load ProcessWire styles load list
-		if($this->custom_css_url != "") {
-			$this->config->styles->add($this->custom_css_url);
-		} elseif(isset($options['icons']['css']) && $options['icons']['css'] != "") {
-			$this->config->styles->add($options['icons']['css']);
+	public function ___render()
+	{
+
+		$this->ready();
+
+		$resource = $this->resource();
+
+		/** @var InputfieldSelect $select */
+		$select = $this->wire->modules->get("InputfieldSelect");
+		$select->set("name", $this->attr("name"));
+		$select->set("class", self::SELECTOR_CLASS);
+		$select->addOption("", __("No Icon"));
+		$select->addOptions($this->getOptions());
+		$select->attr("prefix", $this->prefix);
+		$select->attr("theme", $this->iconPickerTheme);
+		$select->attr("category", $this->iconCategory);
+		$select->attr("icons-per-page", $this->iconPickerIconsPerPage);
+		$select->attr("empty-icon", $this->allowEmptyIcon ? "true" : "false");
+		$select->attr("has-search", $this->iconPickerHasSearch ? "true" : "false");
+
+		// set attributes
+		foreach ($resource["attributes"] as $attribute => $attributeValue) {
+			
+			if (is_bool($attributeValue)) {
+				$attributeValue = $attributeValue ? "true" : "false";
+			}
+
+			$select->attr($attribute, $attributeValue);
 		}
 
-		// If beforeRender() method hooked this will merge empty attributes
-		$attributes = array_merge($this->getAttributes(), $options['attributes']);
+		$select->attr("all-category-text", $this->_("From all categories", __FILE__));
+		$select->attr("un-categorized-text", $this->_("Uncategorized", __FILE__));
 
-		// Set merged attributes
-		$this->setAttributes($attributes);
+		$select->value = $this->prefix . $this->attr("value");
 
-		// Set check theme is empty?
-		if($this->attr('theme') == '') $this->setAttribute('theme', 'fip-grey');
-
-		// Set min per pege icon value to 20 if less than 1
-		if($this->attr('icons-per-page') < 1) $this->setAttribute('icons-per-page', 20);
-
-		// Set true | false for has-search
-		if($this->attr('has-search') === 1) $this->setAttribute('has-search', 'true');
-		else  $this->setAttribute('has-search', 'false');
-
-        // Set true | false for use-attribute
-        if($this->attr('use-attribute') === 1) $this->setAttribute('use-attribute', 'true');
-        else  $this->setAttribute('use-attribute', 'false');
-
-        // Set data-icon | given value for attribute-name
-        if($this->attr('attribute-name') === 1) $this->setAttribute('attribute-name', 'true');
-        else  $this->setAttribute('attribute-name', 'data-icon');
-
-        // Set data-icon | given value for attribute-name
-        if($this->attr('convert-to-hex') === 1) $this->setAttribute('convert-to-hex', 'true');
-        else  $this->setAttribute('convert-to-hex', 'false');
-
-		// Set true | false for empty icon
-		if($this->attr('empty-icon') === 1) $this->setAttribute('empty-icon', 'true');
-		else  $this->setAttribute('empty-icon', 'false');
-
-        // Translations
-        $this->setAttribute('all-category-text', $this->_('From all categories', __FILE__));
-        $this->setAttribute('un-categorized-text', $this->_('Uncategorized', __FILE__));
-
-        // Overwrite attributes by given Icons file
-        if(array_key_exists('attributes', $options['icons'])) {
-            foreach ($options['icons']['attributes'] as $attrKey => $attrValue) {
-                if(is_bool($attrValue)) {
-                    $attrValueReplace = $attrValue === true ? 'true' : 'false';
-                } else {
-                    $attrValueReplace = $attrValue;
-                }
-                $this->setAttribute($attrKey, $attrValueReplace);
-            }
-        }
-
-        // If we don't have prefix attribute create empty prefix attribute
-        if(!$this->getAttribute('prefix')) $this->setAttribute('prefix', '');
-
-        // Set Prefixed Value
-        if($this->attr('value')) $this->setAttribute('value', $this->attr('prefix') . $this->attr('value'));
-
-		// Icons are categorised ? Check is category selected ?
-		$categorised = array_key_exists('categorised', $options['icons']) && $options['icons']['categorised'] === true ? true : false;
-		if($categorised === true) {
-			if(array_key_exists($this->attr('category'), $options['icons']['icons'])) {
-				$icons[] = $options['icons']['icons'][$this->attr('category')];
-			} else {
-				$icons = $options['icons']['icons'];
-			}
-		} else {
-			$icons = $options['icons']['icons'];
-		}
-
-		// Start to build select list
-		$output = "\n<select " . $this->getAttributesString($this->getAttributes()) . ">
-					\n\t<option value=''>" . $this->_('No Icon') . "</option>";
-		// Build categorised icon list
-		if($categorised === true) {
-			foreach($icons as $key => $icon) {
-				$categoryTitle = false;
-				if(isset($icon['title'])) {
-					$output .= "\n\t<optgroup label='{$icon['title']}'>";
-					$categoryTitle = true;
-				}
-				if(isset($icon['icons']) && !empty($icon['icons'])) {
-					foreach($icon['icons'] as $ke => $ic) {
-						$iconValue = $this->attr('prefix') . $ic;
-						$selected = ($this->attr('value') == $iconValue) ? " selected='selected'" : "";
-						$output .= "\n\t\t<option value='{$iconValue}'{$selected}>{$iconValue}</option>";
-					}
-				}
-				if($categoryTitle) $output .= "\n\t</optgroup>";
-			}
-		} else { // Build non categorised icon list
-			foreach($icons as $key => $icon) {
-				$iconValue = $this->attr('prefix') . $icon;
-				$selected = ($this->attr('value') == $iconValue) ? " selected='selected'" : "";
-				$output .= "\n\t<option value='{$iconValue}'{$selected}>{$iconValue}</option>";
-			}
-		}
-
-		$output .= "\n\t</select>";
-
-		return $output;
+		return $select->render();
 	}
 
-	public function ___getConfigInputfields() {
-		$inputfields = parent::___getConfigInputfields();
-		$options = $this->beforeRender();
-		$icons = $options['icons'];
+	/**
+	 * @inheritDoc
+	 *
+	 * @return InputfieldWrapper
+	 */
+	public function ___getConfigInputfields()
+	{
+		$wrapper = parent::___getConfigInputfields();
 
-		$textTrue = "**" . __('true') . "**";
-        $textFalse = "**" . __('false') . "**";
-        $textEmpty = "**" . __('- empty -') . "**";
+		$resource = $this->resource($this->iconLibrary);
 
-		$iconsTitle = array_key_exists('title', $icons) && $icons['title'] != '' ? $icons['title'] : $textEmpty;
-        $iconsVersion = array_key_exists('version', $icons) && $icons['version'] != '' ? $icons['version'] : $textEmpty;
-        $iconsPrefix = array_key_exists('attributes', $icons) && array_key_exists('prefix', $icons['attributes']) && $icons['attributes']['prefix'] != '' ? $icons['attributes']['prefix'] : $textEmpty;
-        $iconsCss = array_key_exists('css', $icons) && $icons['css'] != '' ? $icons['css'] : $textEmpty;
-        $categorised = array_key_exists('categorised', $icons) && $icons['categorised'] === TRUE ? $textTrue : $textFalse;
-        $useAttribute = array_key_exists('attributes', $icons) && array_key_exists('use-attribute', $icons['attributes']) && $icons['attributes']['use-attribute'] === TRUE ? $textTrue : $textFalse;
-        $attributeName = array_key_exists('attributes', $icons) && array_key_exists('attribute-name', $icons['attributes']) ? $icons['attributes']['attribute-name'] : $textEmpty;
+		// Icon: library select
+		/** @var InputfieldSelect $field */
+		$field = $this->wire->modules->get("InputfieldSelect");
+		$field->attr("name", "iconLibrary");
+		$field->label = __("Icon library");
+		$field->description = __("Select icon library you want to use for this input.");
+		$field->notes = "";
+		foreach ($this->resources as $name => $options) {
+			$field->addOption($name, "{$options["title"]} ({$options["base"]})");
+		}
+		$field->required = true;
+		$field->defaultValue = "fieldtypefonticonpicker.fontawesome";
+		$field->value = $this->iconLibrary;
+		$wrapper->append($field);
 
-		/**
-		 * Icon Library
-		 */
-		$field = $this->modules->get('InputfieldSelect');
-		$field->setAttribute('name', 'font_library');
-		$field->label = __('Font Icon Library');
-		$field->description = __('Select an font icon library.');
-		$field->addOption('FontAwesome', 'Font Awesome', ($this->attr('font_library') == 'FontAwesome') ?  array('selected' => 'selected') : array());
-		$field->addOption('Ionicons', 'Ionicons', ($this->attr('font_library') == 'Ionicons') ?  array('selected' => 'selected') : array());
-        $field->addOption('Uikit', 'Uikit', ($this->attr('font_library') == 'Uikit') ?  array('selected' => 'selected') : array());
-        $field->notes = "\n**" . __('Library configs', __FILE__) . "** .
-                         \n- **" . __('Library', __FILE__) . " : **{$iconsTitle}
-                         \n- **" . __('Version', __FILE__) . " : **{$iconsVersion}
-                         \n- **" . __('Prefix', __FILE__) . " : **{$iconsPrefix}
-                         \n- **" . __('CSS File', __FILE__) . " : **{$iconsCss}
-                         \n- **" . __('Categorised', __FILE__) . " : **{$categorised}
-                         \n- **" . __('Use Attribute', __FILE__) . " : **{$useAttribute}
-                         \n- **" . __('Attribute Name', __FILE__) . " : **{$attributeName}
-                         ";
-        $inputfields->required = 1;
-        $inputfields->default = 'FontAwesome';
-		$inputfields->append($field);
+		/** @var InputfieldMarkup $field */
+		/*
+		$field = $this->wire->modules->get("InputfieldMarkup");
 
-		/**
-		 * Custom CSS Url
-		 */
-		$field = $this->modules->get('InputfieldText');
-		$field->setAttribute('name', 'custom_css_url');
-		$field->setAttribute('value', $this->attr('custom_css_url'));
-		$field->label = __('Custom CSS URL');
-		$field->description = __('If this field empty, above css url will be used for selected Font Icon Library');
-		$inputfields->append($field);
+		$table = "<table class='uk-table uk-table-striped'>";
+		$table .= "<thead>";
+		$table .= "<th></th>";
+		$table .= "<th></th>";
+		$table .= "</thead>";
+		$table .= "<tbody>";
+		$table .= "<tr>";
+		$table .= "<th>Base</th>";
+		$table .= "<th>{$resource['base']}</th>";
+		$table .= "</tr>";
+		$table .= "<tr>";
+		$table .= "<th>Filename</th>";
+		$table .= "<th>{$resource['filename']}</th>";
+		$table .= "</tr>";
+		$table .= "<tr>";
+		$table .= "<th>Name</th>";
+		$table .= "<th>{$resource['name']}</th>";
+		$table .= "</tr>";
+		$table .= "<tr>";
+		$table .= "<th>Title</th>";
+		$table .= "<th>{$resource['title']}</th>";
+		$table .= "</tr>";
+		$table .= "<tr>";
+		$table .= "<th>Version</th>";
+		$table .= "<th>{$resource['version']}</th>";
+		$table .= "</tr>";
+		$table .= "<tr>";
+		$table .= "<th>Categories</th>";
+		$table .= "<th>" . count($resource["categories"]) . "</th>";
+		$table .= "</tr>";
+		$table .= "<tr>";
+		$table .= "<th>Icons</th>";
+		$table .= "<th>" . count($resource["icons"]) . "</th>";
+		$table .= "</tr>";
+		$table .= "</tbody>";
+		$table .= "</table>";
 
-		/**
-		 * Coregory Select
-		 * If icons categorised ?
-		 */
-		if($icons['categorised'] === TRUE) {
-			$field = $this->modules->get('InputfieldSelect');
-			$field->setAttribute('name', 'category');
-			$field->label = __('Category');
-			$field->description = __('Select an icon category, if you want a specified category for show.');
-			foreach($icons['icons'] as $key => $icon) {
-				$selected = ($this->attr('category') && $this->attr('category') == $key) ? array('selected' => 'selected') : array();
-				$field->addOption($key, $icon['title'], $selected);
+		$field->value = $table;
+
+		$wrapper->append($field);
+		*/
+
+		// Icon : category select
+		if ($resource["categorized"]) {
+			/** @var InputfieldSelect $field */
+			$field = $this->modules->get("InputfieldSelect");
+			$field->attr("name", "iconCategory");
+			$field->label = __("Icon Category");
+			$field->description = __("Select an icon category, if you want a specified category for show.");
+			foreach($resource["icons"] as $value => $name) {
+				$field->addOption($value, $name["title"]);
 			}
-			$inputfields->append($field);
+			$field->value = $this->iconCategory;
+			$wrapper->append($field);
 		}
 
-		/**
-		 * Theme Select
-		 */
-		$themes = array(
-			'fip-grey' => __('The default theme'),
-			'fip-darkgrey' => __('A deeper shade of the grey theme'),
-			'fip-bootstrap' => __('A nice icon picker theme'),
-			'fip-inverted' => __('Inverted color scheme')
-		);
+		// Icon Picker: theme select
+		/** @var InputfieldSelect $field */
+		$field = $this->modules->get("InputfieldSelect");
+		$field->attr("name", "iconPickerTheme");
+		$field->label = __("Icon Picker Theme");
+		$field->description = __("The theme to be used with the InputfieldFontIconPicker.");
+		$field->addOption("fip-grey", __("The default theme"));
+		$field->addOption("fip-darkgrey", __("A deeper shade of the grey theme"));
+		$field->addOption("fip-bootstrap", __("A nice icon picker theme"));
+		$field->addOption("fip-inverted", __("Inverted color scheme"));
+		$field->required = true;
+		$field->defaultValue = "flip-grey";
+		$field->value = $this->iconPickerTheme;
+		$wrapper->append($field);
 
-		$field = $this->modules->get('InputfieldSelect');
-		$field->setAttribute('name', 'theme');
-		$field->label = __('Theme');
-		$field->description = __('The theme to be used with the InputfieldFontIconPicker.');
-		foreach($themes as $key => $title) {
-			$selected = ($this->attr('theme') && $this->attr('theme') == $key) ? array('selected' => 'selected') : array();
-			$field->addOption($key, $title, $selected);
-		}
-		$inputfields->append($field);
+		// Icon Picker : Icon Per Page
+		/** @var InputfieldInteger $field */
+		$field = $this->modules->get("InputfieldInteger");
+		$field->attr("name", "iconPickerIconsPerPage");
+		$field->label = __("Icon Per Page");
+		$field->description = __("Number of icons per page on the icon picker. Please note that if you have empty icon set to `enable` then the actual number will be one less. For better appearance always provide a number in multiple of 5.");
+		$field->set("inputType", "number");
+		$field->value = $this->iconPickerIconsPerPage;
+		$field->columnWidth = 50;
+		$wrapper->append($field);
 
-		/**
-		 * Empty Icon
-		 */
-		$field = $this->modules->get('InputfieldRadios');
-		$field->setAttribute('name', 'empty-icon');
-		$field->label = __('Empty Icon');
-		$field->description = __('Whether or not empty icon should be shown on the icon picker. If you give your users the option to pick no icon, then leave it enabled.');
-		$field->addOption(1, 'True', ($this->attr('empty-icon')) ?  array('selected' => 'selected') : array());
-		$field->addOption(0, 'False', (!$this->attr('empty-icon')) ?  array('selected' => 'selected') : array());
-		$inputfields->append($field);
+		// Icon Picker : Has Search ?
+		/** @var InputfieldRadios $field */
+		$field = $this->modules->get("InputfieldRadios");
+		$field->set("name", "iconPickerHasSearch");
+		$field->label = __("Has Search");
+		$field->description = __("Whether or not to show the search bar. The search result is always non case sensitive. When the fontIconPicker is initiated on a SELECT element, the option labels (or HTML) are used for search, not the option values.");
+		$field->addOption(1, __("Enable"));
+		$field->addOption(0, __("Disable"));
+		$field->value = $this->iconPickerHasSearch;
+		$field->columnWidth = 50;
+		$wrapper->add($field);
 
-		/**
-		 * Empty Icon Value
-		 */
-		$field = $this->modules->get('InputfieldText');
-		$field->setAttribute('name', 'empty-icon-value');
-		$field->setAttribute('value', $this->attr('empty-icon-value'));
-		$field->label = __('Empty Icon Value');
-		$field->description = __('What should be the value of the INPUT or SELECT field when no icon is selected. This is only used when emptyIcon is set to true.');
-		$inputfields->append($field);
+		// Icon Picker : Allow Empty Icon
+		/** @var InputfieldRadios $field */
+		$field = $this->modules->get("InputfieldRadios");
+		$field->attr("name", "allowEmptyIcon");
+		$field->label = __("Allow Empty Icon ?");
+		$field->description = __("Whether or not empty icon should be shown on the icon picker. If you give your users the option to pick no icon, then leave it enabled.");
+		$field->addOption(1, __("Enable"));
+		$field->addOption(0, __("Disable"));
+		$field->value = $this->allowEmptyIcon;
+		$field->columnWidth = 50;
+		$wrapper->append($field);
 
-		/**
-		 * Icon Per Page
-		 */
-		$field = $this->modules->get('InputfieldInteger');
-		$field->setAttribute('name', 'icons-per-page');
-		$field->label = $this->_('Icon Per Page');
-		$field->setAttribute('value', $this->attr('icons-per-page'));
-		$field->setAttribute('size', 3);
-		$field->description = $this->_('Number of icons per page on the icon picker. Please note that if you have emptyIcon set to true then the actual number will be one less. For better appearance always provide a number in multiple of 5.');
-		$inputfields->append($field);
+		// Icon Picker : Empty Icon Value
+		/** @var InputfieldText $field */
+		$field = $this->modules->get("InputfieldText");
+		$field->set("name", "emptyIconValue");
+		$field->label = __("Empty Icon Value");
+		$field->description = __("What should be the value of the INPUT or SELECT field when no icon is selected. This is only used when emptyIcon is set to true.");
+		$field->value = $this->emptyIconValue;
+		$field->columnWidth = 50;
+		$wrapper->append($field);
 
-		/**
-		 * Has Search
-		 */
-		$field = $this->modules->get('InputfieldRadios');
-		$field->setAttribute('name', 'has-search');
-		$field->label = __('Has Search');
-		$field->description = __('Whether or not to show the search bar. The search result is always non case sensitive. When the fontIconPicker is initiated on a SELECT element, the option labels (or HTML) are used for search, not the option values.');
-		$field->addOption(1, 'True', ($this->attr('has-search')) ?  array('selected' => 'selected') : array());
-		$field->addOption(0, 'False', (!$this->attr('has-search')) ?  array('selected' => 'selected') : array());
-		$inputfields->add($field);
-
-		return $inputfields;
+		return $wrapper;
 	}
 }

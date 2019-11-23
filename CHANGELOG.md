@@ -1,4 +1,20 @@
-# Changelog
+# FieldtypeFontIconPicker CHANGELOG
+
+### Updated
+
+- `render` method
+
+### Added
+
+- `Config Files support` added
+- `configs/IconPicker.*.php` icons added as config file
+
+### Removed
+
+- `Hook Support` removed
+- `icons` folder removed
+
+## v.2.0.0
 
 ### Updated
 
