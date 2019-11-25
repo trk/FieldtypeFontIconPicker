@@ -95,11 +95,11 @@ return $resource;
 
 After you add your custom config file, you will see your config file on library select box. `Library Title` `(Location Folder Name)`.
 
-![Library Select](screenshots/libraries.png)
+![Library Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/libraries.png)
 
 If your library categorized and if you have categorized icons set like `uikit` and `fontawesome` libraries, you will have category limitation options per icon field or leave it empty for allow all categories `(default)`.
 
-![Library Select](screenshots/category-select.png)
+![Library Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/category-select.png)
 
 ---
 
@@ -124,10 +124,10 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
 ```
 
 ## Theme support
-![Library Select](screenshots/theme-support.png)
+![Library Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/theme-support.png)
 
 ## Search support
-![Library Select](screenshots/search-support.png)
+![Library Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/search-support.png)
 
 ## Category support
-![Library Select](screenshots/category-support.png)
+![Library Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/category-support.png)
