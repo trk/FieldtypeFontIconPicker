@@ -4,7 +4,7 @@
 
 ### Supported Icon Libraries
 - [FontAwesome 4.7.0](https://fontawesome.com/v4.7.0/icons/)
-- [Uikit 3.0.0](https://getuikit.com/docs/icon#library)
+- [Uikit 3.0.34](https://getuikit.com/docs/icon#library)
 - [IonicIcons 2.0.1](http://ionicons.com/)
 
 ### [Cahangelog](https://github.com/trk/FieldtypeFontIconPicker/blob/master/CHANGELOG.md)
@@ -21,7 +21,9 @@ All config files need to return a `PHP ARRAY` like examples.
 
 ---
 
-### **Example config file :** create your own icon set. File location is `site/configs/IconPicker.example.php`
+### **Example config file :** create your own icon set.
+
+File location is `site/configs/IconPicker.example.php`
 
 ```php
 <?php
@@ -60,7 +62,9 @@ return [
 ];
 ```
 
-### **Example config file :** use existing and extend it. File location is `site/configs/IconPicker.altivebir.php`
+### **Example config file :** use existing and extend it.
+
+File location is `site/configs/IconPicker.altivebir.php`
 
 ```php
 <?php
