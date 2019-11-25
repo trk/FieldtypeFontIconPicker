@@ -7,13 +7,24 @@
  * @website			: http://altivebir.com.tr
  * @projectWebsite	: https://github.com/trk/FieldtypeFontIconPicker
  */
-class FieldtypeFontIconPicker extends Fieldtype {
+class FieldtypeFontIconPicker extends Fieldtype
+{
+	/**
+	 * @var array $resources
+	 */
+	public $resources = array();
 
-	public static function getModuleInfo() {
+	/**
+	 * @inheritDoc
+	 *
+	 * @return array
+	 */
+	public static function getModuleInfo()
+	{
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Allow you to use icon picker input field.'),
-			'version' => 100,
+			'version' => 200,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'icon' => 'hand-pointer-o',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
@@ -24,29 +35,86 @@ class FieldtypeFontIconPicker extends Fieldtype {
 		);
 	}
 
-	public function init() {
-		parent::init();
+	/**
+	 * @inheritDoc
+	 *
+	 * @return array
+	 */
+	public function resources()
+	{
+		$resources = array();
+
+		$path = $this->wire("config")->paths->siteModules . "**/configs/IconPicker.*.php";
+        $path .= "," . $this->wire("config")->paths->templates . "configs/IconPicker.*.php";
+        
+        foreach (glob("{" . $path . "}", GLOB_BRACE) as $file) {
+
+			$dirname = dirname(dirname($file));
+			$base = strtolower(str_replace([dirname(dirname(dirname($file))), "/"], "", $dirname));
+			$filename = str_replace([dirname($file), "/", "IconPicker.", ".php"], "", $file);
+	
+			$source = include $file;
+	
+			if (is_array($source)) {
+				
+				$name = isset($source["name"]) ? $source["name"] : $filename;
+				$title = isset($source["title"]) ? $source["title"] : $name;
+				$version = isset($source["version"]) ? $source["version"] : "";
+				$styles = isset($source["styles"]) && is_array($source["styles"]) ? $source["styles"] : array();
+				$scripts = isset($source["scripts"]) && is_array($source["scripts"]) ? $source["scripts"] : array();
+				$categorized = isset($source["categorized"]) ? $source["categorized"] : false;
+				$attributes = isset($source["attributes"]) ? $source["attributes"] : array();
+
+	
+				$resources["{$base}.{$name}"] = array(
+					"base" => $base,
+					"filename" => $filename,
+					"name" => $name,
+					"title" => $title,
+					"version" => $version,
+					"styles" => $styles,
+					"scripts" => $scripts,
+					"categorized" => $categorized,
+					"attributes" => $attributes,
+					"icons" => array(),
+					"file" => $file
+				);
+			}
+		}
+
+		return $resources;
 	}
 
 	/**
 	 * Return the associated InputfieldFontIconPicker
 	 *
 	 */
-	public function getInputfield(Page $page, Field $field) {
+	public function getInputfield(Page $page, Field $field)
+	{
 		$inputField = $this->modules->get('InputfieldFontIconPicker');
+
 		return $inputField;
 	}
-
+	
 	/**
-	 * Sanitize value for storage
+	 * @inheritDoc
+	 *
+	 * @param Page $page
+	 * @param Field $field
+	 * @param string $value
+	 * 
+	 * @return string
 	 */
-	public function sanitizeValue(Page $page, Field $field, $value) {
-        $InputfieldFontIconPicker = $this->getInputfield($page, $field);
-        $InputfieldFontIconPicker->font_library = $field->font_library;
-		$options = $InputfieldFontIconPicker->beforeRender();
-		if(array_key_exists('attributes', $options['icons']) && array_key_exists('prefix', $options['icons']['attributes'])) {
-            $value = str_replace($options['icons']['attributes']['prefix'], '', $value);
-        }
+	public function sanitizeValue(Page $page, Field $field, $value)
+	{
+		$inputField = $this->getInputfield($page, $field);
+		$resource = $inputField->resource($field->iconLibrary);
+		$prefix = isset($resource["attributes"]["prefix"]) ? $resource["attributes"]["prefix"] : "";
+
+		if($prefix) {
+            $value = str_replace($prefix, '', $value);
+		}
+		
 		return $value;
 	}
 
@@ -54,8 +122,8 @@ class FieldtypeFontIconPicker extends Fieldtype {
 	 * Return the database schema in specified format
 	 *
 	 */
-	public function getDatabaseSchema(Field $field) {
-
+	public function getDatabaseSchema(Field $field)
+	{
 		// get the default schema
 		$schema = parent::getDatabaseSchema($field);
 

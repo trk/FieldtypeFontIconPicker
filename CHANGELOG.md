@@ -1,4 +1,21 @@
-# Changelog
+# FieldtypeFontIconPicker CHANGELOG
+
+### Updated
+
+- `render` method
+
+### Added
+
+- `Config Files support` added
+- `configs/IconPicker.*.php` icons added as config file
+- `Altivebir.ScriptLoader` script added for load scripts
+
+### Removed
+
+- `Hook Support` removed
+- `icons` folder removed
+
+## v.2.0.0
 
 ### Updated
 

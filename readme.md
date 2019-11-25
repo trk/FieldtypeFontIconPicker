@@ -4,63 +4,115 @@
 
 ### Supported Icon Libraries
 - [FontAwesome 4.7.0](https://fontawesome.com/v4.7.0/icons/)
-- [Uikit 3.0.0](https://getuikit.com/docs/icon#library)
+- [Uikit 3.0.34](https://getuikit.com/docs/icon#library)
 - [IonicIcons 2.0.1](http://ionicons.com/)
 
 ### [Cahangelog](https://github.com/trk/FieldtypeFontIconPicker/blob/master/CHANGELOG.md)
 
+---
+
 **NOTE:** Module store data without prefix, you need to add **"prefix"** when you want to show your icon on front-end, because some of front-end frameworks using font-awesome with different **"prefix"**.
 
-**Example :**
+---
+
+### Module will search `site/modules/**/configs/IconPicker.*.php` and `site/templates/IconPicker.*.php` paths for `FieldtypeFontIconPicker` config files.
+
+All config files need to return a `PHP ARRAY` like examples. 
+
+---
+
+### **Example config file :** create your own icon set.
+
+File location is `site/configs/IconPicker.example.php`
+
 ```php
-if($my-icon-field) echo "<i class='my-prefix-{$my-icon-field}' />";
+<?php
+
+namespace ProcessWire;
+
+/**
+ * IconPicker : Custom Icons
+ */
+return [
+    "name" => "my-custom-icons",
+    "title" => "My Custom Icon Set",
+    "version" => "1.0.0",
+    "styles" => array(
+        wire("config")->urls->templates . "dist/css/my-custom-icons.css"
+    ),
+    "scripts" => array(
+        wire("config")->urls->templates . "dist/js/my-custom-icons.js"
+    ),
+    "categorized" => true,
+    "attributes" => array(),
+    "icons" => array(
+        "brand-icons" => array(
+            "title" => "Brand Icons",
+            "icons" => array(
+                "google", "facebook", "twitter", "instagram"
+            )
+        ),
+        "flag-icons" => array(
+            "title" => "Flag Icons",
+            "icons" => array(
+                "tr", "gb", "us", "it", "de", "nl", "fr"
+            )
+        )
+    )
+];
 ```
 
-**Hook Before Render Example**
-This example using **/site/templates/admin.php** file for hook
+### **Example config file :** use existing and extend it.
+
+File location is `site/configs/IconPicker.altivebir.php`
+
 ```php
-wire()->addHook('InputfieldFontIconPicker::beforeRender', function($event) {
-    if(!$event->return) return;
+<?php
 
-    // Get Input Name (For specified input hook, if you want apply all InputfieldFontIconPicker remove inputName check)
-    $inputName = "";
-    if(isset($event->object->attributes['name'])) $inputName = $event->object->attributes['name'];
+namespace ProcessWire;
 
-    // Get Input Name (For specified input hook, if you want apply all InputfieldFontIconPicker remove inputName check)
-    if($inputName == 'icon_picker') {
+/**
+ * IconPicker : Existing & Extend
+ */
 
-        /**
-        * Load your custom icons function file
-        * Your array need to be same format with Icons/FontAwesome.php or Icons/Ionicons.php
-        * Also you can pass directly an array
-        */
-        wireIncludeFile('MyCustomIconFile');
+$resource = include wire("config")->paths->siteModules . "FieldtypeFontIconPicker/configs/IconPicker.uikit.php";
 
-        // Set icons as $icons variable
-        $icons = MyCustomIconsArray();
+$url = wire("config")->urls->templates . "dist";
 
-        // Set your options
-        $return = array(
-            'attributes' => array(
-                'category' => '',
-                'theme' => 'fip-grey',
-                'empty-icon' => 1,
-                'empty-icon-value' => '',
-                'icons-per-page' => 20,
-                'has-search' => 1
-            ),
-            'icons' => $icons
-        );
+$resource["scripts"] = array_merge($resource["scripts"], ["{$url}/js/Altivebir.Icon.min.js"]);
 
-        // Return the event
-        $event->return = $return;
-    }
+$resource["icons"]["flag-icons"] = [
+    "title" => "Flag Icons",
+    "icons" => array("tr", "en", "fr", "us", "it", "de")
+];
 
-    $event->return;
-});
+$resource["icons"]["brand-icons"]["icons"] = array_merge($resource["icons"]["brand-icons"]["icons"], array(
+    "altivebir"
+));
+
+return $resource;
+```
+
+After you add your custom config file, you will see your config file on library select box. `Library Title` `(Location Folder Name)`.
+
+![Library Select](screenshots/libraries.png)
+
+If your library categorized and if you have categorized icons set like `uikit` and `fontawesome` libraries, you will have category limitation options per icon field or leave it empty for allow all categories `(default)`.
+
+![Library Select](screenshots/category-select.png)
+
+---
+
+### Example : `output`
+
+```php
+if ($icon = $page->get("iconField")) {
+    echo "<i class='prefix-{$icon}' />";
+}
 ```
 
 ### MarkupFontIconPicker Usage
+
 ```php
 // MarkupFontIconPicker::render(YourIconField=string, Options=array)
 echo MarkupFontIconPicker::render($page->YourIconField, [
@@ -71,26 +123,11 @@ echo MarkupFontIconPicker::render($page->YourIconField, [
     ]);
 ```
 
-### Screenshots - InputfieldFontIconPicker input settings
+## Theme support
+![Library Select](screenshots/theme-support.png)
 
-> InputfieldFontIconPicker Setting "Icon library select"
+## Search support
+![Library Select](screenshots/search-support.png)
 
-![InputfieldFontIconPicker Field Settings Category Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/library-select.png)
-
-> InputfieldFontIconPicker Setting "Category Select"
-
-![InputfieldFontIconPicker Field Settings Category Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/category-select.png)
-
-> InputfieldFontIconPicker Setting "Theme Select"
-
-![InputfieldFontIconPicker Field Settings Theme Select](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/theme-select.png)
-
-### Screenshots - InputfieldFontIconPicker page edit views
-
-> InputfieldFontIconPicker Search
-
-![InputfieldFontIconPicker](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/search.png)
-
-> InputfieldFontIconPicker Categories
-
-![InputfieldFontIconPicker](https://raw.githubusercontent.com/trk/FieldtypeFontIconPicker/master/screenshots/categories.png)
+## Category support
+![Library Select](screenshots/category-support.png)

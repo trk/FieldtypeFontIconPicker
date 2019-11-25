@@ -1,18 +1,33 @@
-$(document).ready(function() {
-    var PwContentElement = $('#content');
+// Altivebir
+var Altivebir = Altivebir || {};
 
-    AvbFontIconPickerInit();
+// Altivebir.ScriptLoader
+Altivebir.ScriptLoader = Altivebir.ScriptLoader || {};
 
-    $(document)
-        // .on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
-        .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
-        .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
-    if(PwContentElement.length) {
-        PwContentElement.css(
-            'z-index', 2
-        );
+// Altivebir.ScriptLoader
+Altivebir.ScriptLoader = {
+    Items: {},
+    Add: function (name, value) {
+        if (name !== "undefined" && name !== undefined && value !== "undefined" && value !== undefined) {
+            this.Items[name] = value;
+        }
+    },
+    Remove: function (name) {
+        if (name !== "undefined" && name !== undefined && this.Items[name] !== "undefined" && this.Items[name] !== undefined) {
+            delete this.Items[name];
+        }
+    },
+    Render: function () {
+        if (this.Items.length) {
+            for (var name in this.Items) {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = this.Items[name];
+                $("head").append(script);
+            }
+        }
     }
-});
+};
 
 function AvbFontIconPickerInit() {
     var AvbFontIconPicker = $(".AvbIconPicker"),
@@ -55,3 +70,23 @@ function AvbFontIconPickerInit() {
         }
     });
 }
+
+
+$(document).ready(function() {
+    var PwContentElement = $('#content');
+
+    AvbFontIconPickerInit();
+
+    $(document)
+        // .on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
+        .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
+        .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
+    if(PwContentElement.length) {
+        PwContentElement.css(
+            'z-index', 2
+        );
+    }
+
+    // Altivebir.ScriptLoader
+    Altivebir.ScriptLoader.Render();
+});
