@@ -19,7 +19,8 @@ class FieldtypeFontIconPicker extends Fieldtype
 	 *
 	 * @return array
 	 */
-	public static function getModuleInfo() {
+	public static function getModuleInfo()
+	{
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Allow you to use icon picker input field.'),
@@ -88,7 +89,8 @@ class FieldtypeFontIconPicker extends Fieldtype
 	 * Return the associated InputfieldFontIconPicker
 	 *
 	 */
-	public function getInputfield(Page $page, Field $field) {
+	public function getInputfield(Page $page, Field $field)
+	{
 		$inputField = $this->modules->get('InputfieldFontIconPicker');
 
 		return $inputField;
@@ -120,8 +122,8 @@ class FieldtypeFontIconPicker extends Fieldtype
 	 * Return the database schema in specified format
 	 *
 	 */
-	public function getDatabaseSchema(Field $field) {
-
+	public function getDatabaseSchema(Field $field)
+	{
 		// get the default schema
 		$schema = parent::getDatabaseSchema($field);
 

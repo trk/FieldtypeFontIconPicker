@@ -8,6 +8,7 @@
 
 - `Config Files support` added
 - `configs/IconPicker.*.php` icons added as config file
+- `Altivebir.ScriptLoader` script added for load scripts
 
 ### Removed
 

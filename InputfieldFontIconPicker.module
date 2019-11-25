@@ -1,4 +1,4 @@
-üc<?php
+<?php
 
 /**
  * Class InputfieldFontIconPicker
@@ -16,7 +16,6 @@
  */
 class InputfieldFontIconPicker extends Inputfield
 {
-
 	const SELECTOR_CLASS = "AvbIconPicker";
 
 	/**
@@ -129,7 +128,6 @@ class InputfieldFontIconPicker extends Inputfield
 
 		// Icon Picker : core script
 		$this->wire->config->scripts->add("{$this->moduleURL}/dist/js/jquery.fonticonpicker.min.js?v={$this->version}");
-
 	}
 
 	/**
@@ -226,9 +224,12 @@ class InputfieldFontIconPicker extends Inputfield
 		}
 
 		// Icon Picker : resource scripts
+		/*
 		foreach ($resource["scripts"] as $index => $script) {
 			$this->wire->config->scripts->append("{$script}?v={$this->version}");
 		}
+		*/
+	
 	}
 
 	/**
@@ -271,7 +272,15 @@ class InputfieldFontIconPicker extends Inputfield
 
 		$select->value = $this->prefix . $this->attr("value");
 
-		return $select->render();
+		// Add scripts
+		$output  = "<script>";
+		foreach ($resource["scripts"] as $index => $script) {
+			$name = md5($script);
+			$output .= "Altivebir.ScriptLoader.Add('{$name}', '{$script}');";
+		}
+		$output .= "</script>";
+
+		return $select->render() . $output;
 	}
 
 	/**
