@@ -18,13 +18,11 @@ Altivebir.ScriptLoader = {
         }
     },
     Render: function () {
-        if (this.Items.length) {
-            for (var name in this.Items) {
-                var script = document.createElement("script");
-                script.type = "text/javascript";
-                script.src = this.Items[name];
-                $("head").append(script);
-            }
+        for (var name in this.Items) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = this.Items[name];
+            $("head").append(script);
         }
     }
 };
