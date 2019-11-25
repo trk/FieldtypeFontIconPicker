@@ -38,10 +38,10 @@ return [
     "title" => "My Custom Icon Set",
     "version" => "1.0.0",
     "styles" => array(
-        wire("config")->urls->site . "dist/css/my-custom-icons.css"
+        wire("config")->urls->templates . "dist/css/my-custom-icons.css"
     ),
     "scripts" => array(
-        wire("config")->urls->site . "dist/js/my-custom-icons.js"
+        wire("config")->urls->templates . "dist/js/my-custom-icons.js"
     ),
     "categorized" => true,
     "attributes" => array(),
@@ -77,7 +77,7 @@ namespace ProcessWire;
 
 $resource = include wire("config")->paths->siteModules . "FieldtypeFontIconPicker/configs/IconPicker.uikit.php";
 
-$url = wire("config")->urls->site . "dist";
+$url = wire("config")->urls->templates . "dist";
 
 $resource["scripts"] = array_merge($resource["scripts"], ["{$url}/js/Altivebir.Icon.min.js"]);
 
