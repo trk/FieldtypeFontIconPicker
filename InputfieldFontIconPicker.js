@@ -1,31 +1,18 @@
-// Altivebir
-var Altivebir = Altivebir || {};
+$(document).ready(function() {
+    var PwContentElement = $('#content');
 
-// Altivebir.ScriptLoader
-Altivebir.ScriptLoader = Altivebir.ScriptLoader || {};
+    AvbFontIconPickerInit();
 
-// Altivebir.ScriptLoader
-Altivebir.ScriptLoader = {
-    Items: {},
-    Add: function (name, value) {
-        if (name !== "undefined" && name !== undefined && value !== "undefined" && value !== undefined) {
-            this.Items[name] = value;
-        }
-    },
-    Remove: function (name) {
-        if (name !== "undefined" && name !== undefined && this.Items[name] !== "undefined" && this.Items[name] !== undefined) {
-            delete this.Items[name];
-        }
-    },
-    Render: function () {
-        for (var name in this.Items) {
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            script.src = this.Items[name];
-            $("head").append(script);
-        }
+    $(document)
+        // .on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
+        .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
+        .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
+    if(PwContentElement.length) {
+        PwContentElement.css(
+            'z-index', 2
+        );
     }
-};
+});
 
 function AvbFontIconPickerInit() {
     var AvbFontIconPicker = $(".AvbIconPicker"),
@@ -68,23 +55,3 @@ function AvbFontIconPickerInit() {
         }
     });
 }
-
-
-$(document).ready(function() {
-    var PwContentElement = $('#content');
-
-    AvbFontIconPickerInit();
-
-    $(document)
-        // .on('openReady', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
-        .on('reloaded', '.InputfieldRepeater', AvbFontIconPickerInit)
-        .on('opened', '.InputfieldRepeaterItem', AvbFontIconPickerInit);
-    if(PwContentElement.length) {
-        PwContentElement.css(
-            'z-index', 2
-        );
-    }
-
-    // Altivebir.ScriptLoader
-    Altivebir.ScriptLoader.Render();
-});
