@@ -29,11 +29,6 @@ class InputfieldFontIconPicker extends Inputfield
 	public $version;
 
 	/**
-	 * @var array $resources
-	 */
-	public $resources = array();
-
-	/**
 	 * @var array $resource
 	 */
 	public $resource = array(
@@ -83,7 +78,7 @@ class InputfieldFontIconPicker extends Inputfield
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 200,
+			'version' => 201,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'hand-pointer-o',
@@ -108,9 +103,6 @@ class InputfieldFontIconPicker extends Inputfield
 
 		// Module : url
 		$this->moduleURL = $this->wire->config->urls->siteModules . "FieldtypeFontIconPicker";
-
-		// set resources
-		$this->resources = $this->wire->modules->get("FieldtypeFontIconPicker")->resources();
 
 		// set variables
 		foreach ($this->variables as $name => $default) {
@@ -141,10 +133,12 @@ class InputfieldFontIconPicker extends Inputfield
 	{
 		$iconLibrary = $iconLibrary ?: $this->iconLibrary;
 
+		// get resources
+		$resources = $this->wire->modules->get("FieldtypeFontIconPicker")->resources();
 		$resource = array();
 
-		if ($iconLibrary && isset($this->resources[$iconLibrary])) {
-			$resource = $this->resources[$iconLibrary];
+		if ($iconLibrary && isset($resources[$iconLibrary])) {
+			$resource = $resources[$iconLibrary];
 			$source = include $resource["file"];
 			$resource["icons"] = isset($source["icons"]) ? $source["icons"] : array();
 		}
@@ -301,7 +295,9 @@ class InputfieldFontIconPicker extends Inputfield
 		$field->label = __("Icon library");
 		$field->description = __("Select icon library you want to use for this input.");
 		$field->notes = "";
-		foreach ($this->resources as $name => $options) {
+		// get resources
+		$resources = $this->wire->modules->get("FieldtypeFontIconPicker")->resources();
+		foreach ($resources as $name => $options) {
 			$field->addOption($name, "{$options["title"]} ({$options["base"]})");
 		}
 		$field->required = true;
