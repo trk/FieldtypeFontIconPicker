@@ -83,7 +83,7 @@ class InputfieldFontIconPicker extends Inputfield
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Font icon picker input for fieldtype font icon picker, allow you to select font-awesome icons'),
-			'version' => 200,
+			'version' => 201,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
 			'icon' => 'hand-pointer-o',
