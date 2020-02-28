@@ -68,17 +68,12 @@ class FieldtypeFontIconPicker extends Fieldtype
 		$resources = array();
 
 		$paths = array_merge($this->finder($this->config->paths->siteModules), $this->finder($this->config->paths->templates . "configs" . DIRECTORY_SEPARATOR));
-
-		// $path = $this->wire("config")->paths->siteModules . "**/configs/IconPicker.*.php";
-		// $path .= "," . $this->wire("config")->paths->templates . "configs/IconPicker.*.php";
-
-		// $paths = glob("{" . $path . "}", GLOB_BRACE);
         
         foreach ($paths as $file) {
 
 			$dirname = dirname(dirname($file));
-			$base = strtolower(str_replace([dirname(dirname(dirname($file))), DIRECTORY_SEPARATOR], "", $dirname));
-			$filename = str_replace([dirname($file), DIRECTORY_SEPARATOR, "IconPicker.", ".php"], "", $file);
+			$base = strtolower(str_replace([dirname(dirname(dirname($file))), "/", "\\"], "", $dirname));
+			$filename = str_replace([dirname($file), "/", "\\", "IconPicker.", ".php"], "", $file);
 	
 			$source = include $file;
 	
