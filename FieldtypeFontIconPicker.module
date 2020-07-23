@@ -7,7 +7,7 @@
  * @website			: http://altivebir.com.tr
  * @projectWebsite	: https://github.com/trk/FieldtypeFontIconPicker
  */
-class FieldtypeFontIconPicker extends Fieldtype
+class FieldtypeFontIconPicker extends Fieldtype implements Module, ConfigurableModule
 {
 	/**
 	 * @var array $resources
@@ -24,7 +24,7 @@ class FieldtypeFontIconPicker extends Fieldtype
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Allow you to use icon picker input field.'),
-			'version' => 201,
+			'version' => 202,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'icon' => 'hand-pointer-o',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
@@ -45,16 +45,20 @@ class FieldtypeFontIconPicker extends Fieldtype
 	 */
 	protected function finder(string $path, $filter = "configs/IconPicker.")
 	{
-		$paths = array();
+		if ($this->useGlob) {
+            $paths = glob('{' . $this->config->paths->templates . $filter. '*.php,' . $this->config->paths->siteModules . '*/' . $filter . '*.php}', GLOB_BRACE | GLOB_NOSORT);
+        } else {
+            $paths = array();
 
-		foreach($this->files->find($path, ["extensions" => ["php"]]) as $path) {
-			if ($filter && strpos($path, $filter) === false) {
-				continue;
+			foreach($this->files->find($path, ["extensions" => ["php"]]) as $path) {
+				if ($filter && strpos($path, $filter) === false) {
+					continue;
+				}
+
+				$paths[] = $path;
 			}
-
-			$paths[] = $path;
 		}
-
+		
 		return $paths;
 	}
 
@@ -152,5 +156,31 @@ class FieldtypeFontIconPicker extends Fieldtype
 		$schema['data'] = "VARCHAR(255) NOT NULL DEFAULT ''";
 
 		return $schema;
+	}
+
+	/**
+     * Return an InputfieldWrapper of Inputfields used to configure the class
+     *
+     * @param array $data Array of config values indexed by field name
+     * 
+     * @return InputfieldsWrapper
+     *
+     */
+    public function getModuleConfigInputfields(array $data) {
+        
+        $wrapper = new InputfieldWrapper();
+
+        /**
+         * @var InputfieldCheckbox $checkbox
+         */
+        $checkbox = wire('modules')->get('InputfieldCheckbox');
+        $checkbox->attr('name', 'useGlob');
+        $checkbox->set('label', 'Finder method');
+        $checkbox->set('checkboxLabel', __('Use `glob` method for find config files'));
+        $checkbox->attr('checked', $this->useGlob ? 'checked' : '');
+
+        $wrapper->add($checkbox);
+        
+		return $wrapper;
 	}
 }

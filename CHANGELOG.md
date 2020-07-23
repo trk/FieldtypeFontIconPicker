@@ -1,5 +1,9 @@
 # FieldtypeFontIconPicker CHANGELOG
 
+- Module config `useGlob` for find config files
+
+## v.2.0.2
+
 ### Updated
 
 - `render` method
