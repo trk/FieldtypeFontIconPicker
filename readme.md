@@ -6,6 +6,7 @@
 - [FontAwesome 4.7.0](https://fontawesome.com/v4.7.0/icons/)
 - [Uikit 3.0.34](https://getuikit.com/docs/icon#library)
 - [IonicIcons 2.0.1](http://ionicons.com/)
+- [Remix Icon 2.5.0](https://remixicon.com/)
 
 ### [Cahangelog](https://github.com/trk/FieldtypeFontIconPicker/blob/master/CHANGELOG.md)
 

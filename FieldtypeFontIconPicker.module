@@ -24,7 +24,7 @@ class FieldtypeFontIconPicker extends Fieldtype implements Module, ConfigurableM
 		return array(
 			'title' => 'Icon Picker',
 			'summary' => __('Allow you to use icon picker input field.'),
-			'version' => 202,
+			'version' => 203,
 			'author' => 'İskender TOTOĞLU | @ukyo(community), @trk (Github), http://altivebir.com.tr',
 			'icon' => 'hand-pointer-o',
 			'href' => 'https://github.com/trk/FieldtypeFontIconPicker',
